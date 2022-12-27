@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:barcode="clr-namespace:Syncfusion.Maui.Barcode;assembly=Syncfusion.Maui.Barcode"
+             xmlns:vm="clr-namespace:helloralph.ViewModels"
+             xmlns:custom="clr-namespace:helloralph.Custom"
+             x:Class="helloralph.Views.SfBarcodeGeneratorPage"
+             Title="{Binding Title}">
+    <ContentPage.BindingContext>
+        <vm:SfBarcodeGeneratorViewModel></vm:SfBarcodeGeneratorViewModel>
+    </ContentPage.BindingContext>
+    <VerticalStackLayout Spacing="10">
+        <VerticalStackLayout>
+            <Label Style="{StaticResource MediumLabel}" Text="Barcode Generator"></Label>
+            <custom:DefaultSfBarcodeGenerator Value="https://www.google.com"
+                                              ShowText="True"
+                                              HeightRequest="150"></custom:DefaultSfBarcodeGenerator>
+        </VerticalStackLayout>
+        <VerticalStackLayout>
+            <Label Style="{StaticResource MediumLabel}" Text="QR Code"></Label>
+            <custom:DefaultSfBarcodeGenerator Value="https://www.google.com"
+                                              ShowText="True"
+                                              HeightRequest="150">
+                <custom:DefaultSfBarcodeGenerator.Symbology>
+                    <barcode:QRCode></barcode:QRCode>
+                </custom:DefaultSfBarcodeGenerator.Symbology>
+            </custom:DefaultSfBarcodeGenerator>
+        </VerticalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>

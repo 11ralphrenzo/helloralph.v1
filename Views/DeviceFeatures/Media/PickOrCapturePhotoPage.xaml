@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:helloralph.ViewModels"
+             x:Class="helloralph.Views.PickOrCapturePhotoPage">
+    <ContentPage.BindingContext>
+        <vm:PickOrCapturePhotoViewModel></vm:PickOrCapturePhotoViewModel>
+    </ContentPage.BindingContext>
+    <Grid ColumnDefinitions="*,*" RowDefinitions="*,Auto">
+        <Image Source="{Binding LocalFilePath}" 
+               BackgroundColor="Black"
+               Aspect="Center"
+               Grid.ColumnSpan="2"></Image>
+        <Label Text="Nothing to Display"
+               Grid.ColumnSpan="2"
+               VerticalOptions="CenterAndExpand"
+               HorizontalOptions="Center"
+               IsVisible="false">
+            <Label.Triggers>
+                <DataTrigger TargetType="Label" Binding="{Binding LocalFilePath, TargetNullValue=''}" Value="">
+                    <Setter Property="IsVisible" Value="true"></Setter>
+                </DataTrigger>
+            </Label.Triggers>
+        </Label>
+        <Button Text="Pick" 
+                Grid.Row="1"
+                Command="{Binding TapCommand}" 
+                CommandParameter="PickPhoto"
+                CornerRadius="0"
+                HeightRequest="50"></Button>
+        <Button Text="Capture" 
+                Grid.Column="1"
+                Grid.Row="1"
+                Command="{Binding TapCommand}" 
+                BackgroundColor="Red"
+                CornerRadius="0"
+                HeightRequest="50"
+                CommandParameter="CapturePhoto"></Button>
+    </Grid>
+</ContentPage>

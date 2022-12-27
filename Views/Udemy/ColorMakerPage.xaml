@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:helloralph.ViewModels"
+             x:Class="helloralph.Views.ColorMakerPage"
+             BackgroundColor="{Binding SelectedColor}">
+    <ContentPage.Resources>
+        <Style TargetType="Slider"
+               x:Key="DefaultSlider">
+            <Setter Property="Minimum"
+                    Value="0"></Setter>
+            <Setter Property="Maximum"
+                    Value="255"></Setter>
+        </Style>
+    </ContentPage.Resources>
+    <ContentPage.BindingContext>
+        <vm:ColorMakerViewModel></vm:ColorMakerViewModel>
+    </ContentPage.BindingContext>
+    <Frame HasShadow="False"
+            VerticalOptions="CenterAndExpand"
+            Padding="20"
+            Margin="20">
+        <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto"
+              ColumnDefinitions="*,*"
+              RowSpacing="10"
+              ColumnSpacing="10">
+            <Label Grid.Row="0"
+                   Grid.ColumnSpan="2"
+                   Text="Color Picker"
+                    TextColor="Black"
+                    FontSize="Large"
+                    FontAttributes="Bold"
+                    HorizontalTextAlignment="Center"></Label>
+            <Label Grid.Row="1"
+                   Grid.ColumnSpan="2"
+                   Text="Red Value:"></Label>
+            <Slider Grid.Row="2"
+                    Grid.ColumnSpan="2"
+                    Value="{Binding RedVal}"
+                    Style="{StaticResource DefaultSlider}"
+                    DragCompleted="Slider_DragCompleted"></Slider>
+            <Label Grid.Row="3"
+                   Grid.ColumnSpan="2"
+                   Text="Green Value:"></Label>
+            <Slider Grid.Row="4"
+                    Grid.ColumnSpan="2"
+                    Value="{Binding GreenVal}"
+                    Style="{StaticResource DefaultSlider}"
+                    DragCompleted="Slider_DragCompleted"></Slider>
+            <Label Grid.Row="5"
+                   Grid.ColumnSpan="2"
+                   Text="Blue Value:"></Label>
+            <Slider Grid.Row="6"
+                    Grid.ColumnSpan="2"
+                    Value="{Binding BlueVal}"
+                    Style="{StaticResource DefaultSlider}"
+                    DragCompleted="Slider_DragCompleted"></Slider>
+            <Button Grid.Row="7"
+                    Grid.Column="1"
+                    Text="{Binding SelectedColorStr}"
+                    BackgroundColor="{Binding SelectedColor}"
+                    TextColor="White"
+                    Command="{Binding CopyColorHexCommand}"></Button>
+            <Button Grid.Row="7"
+                    Grid.Column="0"
+                    Text="Random"
+                    BackgroundColor="Red"
+                    TextColor="White"
+                    Command="{Binding GenerateRandomColorCommand}"></Button>
+        </Grid>
+    </Frame>
+</ContentPage>

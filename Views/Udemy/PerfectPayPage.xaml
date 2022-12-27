@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:helloralph.ViewModels"
+             x:Class="helloralph.Views.PerfectPayPage"
+             Title="PerfectPayPage">
+    <ContentPage.BindingContext>
+        <vm:PerfectPayViewModel></vm:PerfectPayViewModel>
+    </ContentPage.BindingContext>
+    <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto"
+          ColumnDefinitions=".4*,.6*"
+          Padding="20"
+          RowSpacing="60">
+        <Frame Grid.ColumnSpan="2"
+               BackgroundColor="Gray"
+               Padding="20,20,20,40">
+            <Grid RowDefinitions="Auto,Auto"
+                  ColumnDefinitions="*,Auto,*"
+                  RowSpacing="10">
+                <Label Grid.ColumnSpan="3"
+                       Text="Total P/Person"
+                       TextColor="White"
+                       HorizontalTextAlignment="Center"></Label>
+                <Label Grid.Row="1"
+                       Text="{Binding TotalByPerson, StringFormat='{0:C}'}"
+                       FontSize="Title"
+                       TextColor="White"
+                       FontAttributes="Bold"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"></Label>
+                <BoxView Grid.Row="1"
+                         Grid.Column="1"
+                         Color="White"
+                         WidthRequest="1"></BoxView>
+                <VerticalStackLayout Grid.Row="1"
+                                     Grid.Column="2"
+                                     VerticalOptions="CenterAndExpand"
+                                     Margin="40,10,0,10">
+                    <Label Text="SUBTOTAL"
+                           TextColor="WhiteSmoke"></Label>
+                    <Label Text="{Binding SubTotal, StringFormat='{0:C}'}"
+                           TextColor="White"
+                           FontAttributes="Bold"></Label>
+                    <Label Text="TIP"
+                           TextColor="WhiteSmoke"
+                           Margin="0,20,0,0"></Label>
+                    <Label Text="{Binding TipByPerson, StringFormat='{0:C}'}"
+                           TextColor="White"
+                           FontAttributes="Bold"></Label>
+                </VerticalStackLayout>
+            </Grid>
+        </Frame>
+        <Label Grid.Row="1"
+               Text="Enter your bill: $"
+               VerticalTextAlignment="Center"></Label>
+        <Entry Grid.Row="1"
+               Grid.Column="1"
+               Text="{Binding Bill}"
+               HorizontalOptions="FillAndExpand"></Entry>
+        <Label Grid.Row="2"
+               Text="Choose your tip:"
+               VerticalTextAlignment="Center"></Label>
+        <Grid Grid.Row="2"
+              Grid.Column="1"
+              ColumnDefinitions="*,*,*"
+              ColumnSpacing="10">
+            <Button Text="10%"
+                    Command="{Binding ChangeTipCommand}"
+                    CommandParameter="10">
+                <Button.Triggers>
+                    <DataTrigger TargetType="Button"
+                                 Binding="{Binding Tip}"
+                                 Value="10">
+                        <Setter Property="IsEnabled"
+                                Value="False"></Setter>
+                    </DataTrigger>
+                </Button.Triggers>
+            </Button>
+            <Button Grid.Column="1"
+                    Text="20%"
+                    Command="{Binding ChangeTipCommand}"
+                    CommandParameter="20">
+                <Button.Triggers>
+                    <DataTrigger TargetType="Button"
+                                 Binding="{Binding Tip}"
+                                 Value="20">
+                        <Setter Property="IsEnabled"
+                                Value="False"></Setter>
+                    </DataTrigger>
+                </Button.Triggers>
+            </Button>
+            <Button Grid.Column="2"
+                    Text="30%"
+                    Command="{Binding ChangeTipCommand}"
+                    CommandParameter="30">
+                <Button.Triggers>
+                    <DataTrigger TargetType="Button"
+                                 Binding="{Binding Tip}"
+                                 Value="30">
+                        <Setter Property="IsEnabled"
+                                Value="False"></Setter>
+                    </DataTrigger>
+                </Button.Triggers>
+            </Button>
+        </Grid>
+        <Label Grid.Row="3"
+            Text="{Binding Tip, StringFormat='Tip: {0}%'}"
+            VerticalTextAlignment="Center"></Label>
+        <Slider Grid.Row="3"
+                Grid.Column="1"
+                Value="{Binding Tip}"
+                Maximum ="50"></Slider>
+        <Label Grid.Row="4"
+            Text="Split the total:"
+            VerticalTextAlignment="Center"></Label>
+        <Grid Grid.Row="4"
+            Grid.Column="1"
+            ColumnDefinitions="Auto,Auto,Auto">
+            <Button Text="-"
+                    WidthRequest="50"
+                    CornerRadius="0"
+                    Command="{Binding ChangeNumPersonCommand}"
+                    CommandParameter="false"></Button>
+            <Label Grid.Column="1"
+                   Text="{Binding NumPerson}"
+                   WidthRequest="70"
+                   VerticalTextAlignment="Center"
+                   HorizontalTextAlignment="Center"
+                   BackgroundColor="Silver"
+                   FontSize="Medium"></Label>
+            <Button Grid.Column="2"
+                    Text="+"
+                    WidthRequest="50"
+                    CornerRadius="0"
+                    Command="{Binding ChangeNumPersonCommand}"
+                    CommandParameter="true"></Button>
+        </Grid>
+    </Grid> 
+</ContentPage>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:helloralph.ViewModels"
+             x:Class="helloralph.Views.AddEditUserPage"
+             x:DataType="vm:AddEditUserViewModel"
+             Title="Create User">
+    <ContentPage.Triggers>
+        <DataTrigger Binding="{Binding IsCreating}" Value="false" TargetType="ContentPage">
+            <Setter Property="Title" Value="Edit User"></Setter>
+        </DataTrigger>
+    </ContentPage.Triggers>
+    <VerticalStackLayout Spacing="10">
+        <Image Source="{Binding User.Picture}" HeightRequest="100" WidthRequest="100"></Image>
+        <Entry Placeholder="Title" Text="{Binding User.Title}">
+            <Entry.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding SelectTitleCommand}"></TapGestureRecognizer>
+            </Entry.GestureRecognizers>
+        </Entry>
+        <Entry Placeholder="First Name" Text="{Binding User.FirstName}"></Entry>
+        <Entry Placeholder="Last Name" Text="{Binding User.LastName}"></Entry>
+        <Entry Placeholder="Email Address" Text="{Binding User.Email}"></Entry>
+        <Entry Placeholder="City" Text="{Binding User.Location.City}"></Entry>
+        <Entry Placeholder="Country" Text="{Binding User.Location.Country}"></Entry>
+        <Entry Placeholder="State" Text="{Binding User.Location.State}"></Entry>
+        <Entry Placeholder="Street" Text="{Binding User.Location.Street}"></Entry>
+        <Button Text="Create" Command="{Binding UpdateUserCommand}">
+            <Button.Triggers>
+                <DataTrigger Binding="{Binding IsCreating}" Value="false" TargetType="Button">
+                    <Setter Property="Text" Value="Update"></Setter>
+                </DataTrigger>
+            </Button.Triggers>
+        </Button>
+    </VerticalStackLayout>
+</ContentPage>

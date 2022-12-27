@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="helloralph.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:helloralph.Views"
+    FlyoutHeaderBehavior="CollapseOnScroll"
+    Shell.FlyoutBehavior="Flyout">
+    <Shell.FlyoutHeaderTemplate>
+        <DataTemplate>
+            <VerticalStackLayout Padding="41,76,21,10">
+                <Label Text="hello!"
+                       FontFamily="JaldiBold"
+                       FontSize="48"></Label>
+            </VerticalStackLayout>
+        </DataTemplate>
+    </Shell.FlyoutHeaderTemplate>
+    <Shell.FlyoutFooterTemplate>
+        <DataTemplate>
+            <Label Text="FOOTER"></Label>
+        </DataTemplate>
+    </Shell.FlyoutFooterTemplate>
+    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
+        <ShellContent Title="About Me"
+            ContentTemplate="{DataTemplate views:AboutMePage}"/>
+    </FlyoutItem>
+    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
+        <ShellContent Title="Home"
+                    ContentTemplate="{DataTemplate views:WelcomePage}"/>
+    </FlyoutItem>
+    <FlyoutItem Title="Udemy Tutorials"
+                FlyoutDisplayOptions="AsMultipleItems">
+        <ShellContent Title="Color Maker"
+                    ContentTemplate="{DataTemplate views:ColorMakerPage}"/>
+        <ShellContent Title="Perfect Pay"
+            ContentTemplate="{DataTemplate views:PerfectPayPage}"/>
+    </FlyoutItem>
+    <FlyoutItem Title="Syncfusion"
+                FlyoutDisplayOptions="AsMultipleItems">
+        <ShellContent Title="Avatar View"
+                      ContentTemplate="{DataTemplate views:SfAvatarPage}"
+                      Route="SfAvatar"/>
+        <!--<ShellContent Title="Barcode Generator"
+                    Icon="menu_info.svg"
+                    ContentTemplate="{DataTemplate views:SfBarcodeGeneratorPage}"/>
+        <ShellContent Title="Badge View"
+                    Icon="menu_info.svg"
+                    ContentTemplate="{DataTemplate views:SfBadgePage}"/>
+        <ShellContent Title="Busy Indicator"
+                    Icon="menu_info.svg"
+                    ContentTemplate="{DataTemplate views:SfBusyIndicatorPage}"/>-->
+    </FlyoutItem>
+    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
+        <ShellContent Title="Sample REST Integration"
+                    Icon="menu_info.svg"
+                    ContentTemplate="{DataTemplate views:RESTIntegrationPage}"/>
+    </FlyoutItem>
+    <FlyoutItem Title="Device Features"
+                FlyoutDisplayOptions="AsMultipleItems">
+        <ShellContent Title="App Information"
+                      ContentTemplate="{DataTemplate views:AppInfoPage}"
+                      Route="AppInfo"/>
+        <ShellContent Title="Battery"
+                    ContentTemplate="{DataTemplate views:BatteryInfoPage}"/>
+        <ShellContent Title="Device Information"
+                    ContentTemplate="{DataTemplate views:DeviceInfoPage}"/>
+        <ShellContent Title="Geocoding"
+                    ContentTemplate="{DataTemplate views:GeocodingPage}"/>
+        <ShellContent Title="Geolocation"
+                    ContentTemplate="{DataTemplate views:GeolocationPage}"/>
+        <ShellContent Title="Media Picker"
+                    ContentTemplate="{DataTemplate views:MediaPickerPage}"/>
+    </FlyoutItem>
+</Shell>

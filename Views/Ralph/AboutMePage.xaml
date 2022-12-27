@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:helloralph.ViewModels"
+             xmlns:m="clr-namespace:helloralph.Models"
+             x:Class="helloralph.Views.AboutMePage"
+             Shell.NavBarIsVisible="False"
+             Title="AboutMePage">
+    <ContentPage.BindingContext>
+        <vm:AboutMeViewModel></vm:AboutMeViewModel>
+    </ContentPage.BindingContext>
+    <CollectionView IsGrouped="True"
+                    ItemsSource="{Binding ExpGroups}"
+                    Margin="0,-60,0,0">
+        <CollectionView.Header>
+            <Grid RowDefinitions="Auto,*">
+                <Border Grid.Row="0"
+                        VerticalOptions="Start"
+                        HeightRequest="297"
+                        StrokeThickness="0">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="0,0,50,50 "></RoundRectangle>
+                    </Border.StrokeShape>
+                    <Border.Shadow>
+                        <Shadow Brush="#000"
+                                Opacity="0.6"
+                                Radius="15"
+                                Offset="0,5"></Shadow>
+                    </Border.Shadow>
+                    <Grid>
+                        <Image Source="ralph.jpg"
+                            Aspect="AspectFill">
+                        </Image>
+                        <Border VerticalOptions="End"
+                                StrokeThickness="0"
+                                    BackgroundColor="#4D000000"
+                                    Opacity="1"
+                                    HeightRequest="74">
+                            <VerticalStackLayout VerticalOptions="CenterAndExpand"
+                                                    Spacing="0">
+                                <Label Text="RALPH RENZO T. PITOGO"
+                                        TextColor="White"
+                                        HorizontalTextAlignment="Center"
+                                        FontFamily="JaldiBold"
+                                        FontAttributes="Bold"
+                                        FontSize="24"></Label>
+                                <Label Text="SOFTWARE ENGINEER"
+                                        TextColor="White"
+                                        HorizontalTextAlignment="Center"
+                                        FontFamily="LatoRegular"
+                                        Margin="0,-8,0,0"></Label>
+                            </VerticalStackLayout>
+                        </Border>
+                    </Grid>
+                </Border>
+                <ImageButton Grid.Row="0"
+                    Margin="30,60,0,0"
+                    HeightRequest="36"
+                    WidthRequest="36"
+                    Source="menu.png"
+                    BackgroundColor="Transparent"
+                    VerticalOptions="Start"
+                    HorizontalOptions="Start"
+                    Command="{Binding ShowMenuCommand}"></ImageButton>
+            </Grid>
+        </CollectionView.Header>
+        <CollectionView.GroupHeaderTemplate>
+            <DataTemplate>
+                <VerticalStackLayout Padding="26,30,26,24">
+                    <Label Text="{Binding Name}"
+                            FontSize="20"
+                            FontFamily="JaldiBold">
+                    </Label>
+                </VerticalStackLayout>
+
+            </DataTemplate>
+        </CollectionView.GroupHeaderTemplate>
+        <CollectionView.ItemTemplate>
+            <DataTemplate x:DataType="m:ExperienceModel">
+                <Grid Padding="26,0,26,11"
+                        ColumnDefinitions="Auto,*"
+                        ColumnSpacing="12">
+                    <ImageButton Grid.Row="0"
+                            Grid.Column="0"
+                            WidthRequest="57"
+                            HeightRequest="57"
+                            BackgroundColor="Silver"
+                            CornerRadius="28"
+                            Source="{Binding Image}"></ImageButton>
+                    <Border Grid.Row="0"
+                            Grid.Column="1"
+                            BackgroundColor="#EDEDED"
+                            StrokeShape="RoundRectangle 20"
+                            StrokeThickness="0">
+                        <Grid Padding="19,14,19,14"
+                                ColumnDefinitions="*,Auto"
+                                RowDefinitions="Auto,Auto"
+                                ColumnSpacing="3">
+                            <Label Grid.Column="0"
+                                    Text="{Binding Name}"
+                                    FontFamily="JaldiBold"
+                                    FontSize="14"></Label>
+                            <Label Grid.Row="1"
+                                    Grid.Column="0"
+                                    Text="{Binding Position}"
+                                    FontFamily="LatoRegular"
+                                    FontSize="12"></Label>
+                            <Label IsVisible="{Binding HasExperience}"
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    Text="{Binding NumYears, Converter={StaticResource NumYearsConverter}}"
+                                    FontFamily="LatoRegular"
+                                    FontSize="14"
+                                    HorizontalTextAlignment="End"></Label>
+                            <Label IsVisible="{Binding HasExperience}"
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    Text="{Binding NumMonths, Converter={StaticResource NumMonthsConverter}}"
+                                    FontFamily="LatoRegular"
+                                    FontSize="10"
+                                    HorizontalTextAlignment="End"></Label>
+                        </Grid>
+                    </Border>
+                </Grid>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
+</ContentPage>

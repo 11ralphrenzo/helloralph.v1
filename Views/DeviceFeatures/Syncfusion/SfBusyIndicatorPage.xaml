@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:helloralph.ViewModels"
+             xmlns:custom="clr-namespace:helloralph.Custom"
+             x:Class="helloralph.Views.SfBusyIndicatorPage"
+             Title="{Binding Title}">
+    <ContentPage.BindingContext>
+        <vm:SfBusyIndicatorViewModel></vm:SfBusyIndicatorViewModel>
+    </ContentPage.BindingContext>
+    <VerticalStackLayout Spacing="10">
+        <VerticalStackLayout>
+            <Label Style="{StaticResource MediumLabel}" Text="Circular"></Label>
+            <custom:DefaultSfBusyIndicator IsRunning="True"
+                                           AnimationType="CircularMaterial"
+                                           HeightRequest="100"></custom:DefaultSfBusyIndicator>
+        </VerticalStackLayout>
+        <VerticalStackLayout>
+            <Label Style="{StaticResource MediumLabel}" Text="Cupertino"></Label>
+            <custom:DefaultSfBusyIndicator IsRunning="True"
+                                           AnimationType="Cupertino"
+                                           HeightRequest="100"></custom:DefaultSfBusyIndicator>
+        </VerticalStackLayout>
+        <VerticalStackLayout>
+            <Label Style="{StaticResource MediumLabel}" Text="Linear"></Label>
+            <custom:DefaultSfBusyIndicator IsRunning="True"
+                                           AnimationType="LinearMaterial"
+                                           HeightRequest="100"></custom:DefaultSfBusyIndicator>
+        </VerticalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="helloralph.Views.DeviceInfoPage"
+             xmlns:custom="clr-namespace:helloralph.Custom"
+             xmlns:m="clr-namespace:helloralph.Models"
+             xmlns:vm="clr-namespace:helloralph.ViewModels"
+             x:DataType="vm:DeviceInfoViewModel">
+    <ContentPage.BindingContext>
+        <vm:DeviceInfoViewModel></vm:DeviceInfoViewModel>
+    </ContentPage.BindingContext>
+    <CollectionView ItemsSource="{Binding DeviceInfos}">
+        <CollectionView.Header>
+            <custom:DefaultPageTitleView Title="{Binding Title}"></custom:DefaultPageTitleView>
+        </CollectionView.Header>
+        <CollectionView.ItemTemplate>
+            <DataTemplate x:DataType="m:DeviceInfoModel">
+                <custom:DefaultListItemView BindingContext="{Binding .}"></custom:DefaultListItemView>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
+</ContentPage>

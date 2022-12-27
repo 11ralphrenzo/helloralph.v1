@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:helloralph.ViewModels"
+             xmlns:da="clr-namespace:helloralph.Models.DummyApi"
+             x:DataType="vm:UserDetailsViewModel"
+             x:Class="helloralph.Views.UserDetailsPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Edit" Command="{Binding GoToEditUserCommand}" CommandParameter="{Binding User}"></ToolbarItem>
+        <ToolbarItem Text="Delete" Command="{Binding DeleteUserCommand}" CommandParameter="{Binding User}"></ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <VerticalStackLayout HorizontalOptions="CenterAndExpand" Spacing="10">
+        <Image Source="{Binding User.Picture}" WidthRequest="100" HeightRequest="100" Margin="0,50,0,0"></Image>
+        <Label Text="{Binding User.Id}" />
+        <Label Text="{Binding User.Title}" />
+        <Label Text="{Binding User.FirstName}" />
+        <Label Text="{Binding User.LastName}" />
+        <Label Text="{Binding User.Gender}" />
+        <Label Text="{Binding User.Email}" />
+        <Label Text="{Binding User.DateOfBirth}" />
+        <Label Text="{Binding User.RegisterDate}" />
+        <Label Text="{Binding User.Phone}" />
+        <Label Text="{Binding User.Location.Street}" />
+        <Label Text="{Binding User.Location.City}" />
+        <Label Text="{Binding User.Location.State}" />
+        <Label Text="{Binding User.Location.Country}" />
+        <Label Text="{Binding User.Location.Timezone}" />
+    </VerticalStackLayout>
+</ContentPage>

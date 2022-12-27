@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:helloralph.ViewModels"
+             xmlns:custom="clr-namespace:helloralph.Custom"
+             x:Class="helloralph.Views.SfAvatarPage" 
+             Title="{Binding Title}">
+    <ContentPage.BindingContext>
+        <vm:SfAvatarViewModel></vm:SfAvatarViewModel>
+    </ContentPage.BindingContext>
+    <ScrollView>
+        <VerticalStackLayout>
+            <VerticalStackLayout>
+                <VerticalStackLayout>
+                    <Label Style="{StaticResource MediumLabel}" Text="Default - Circle and Square"></Label>
+                    <Grid ColumnDefinitions="*,*">
+                        <custom:DefaultSfAvatarView ContentType="Default"
+                                            HeightRequest="150"
+                                            WidthRequest="150"
+                                            BorderColor="Blue"
+                                            CornerRadius="75">
+                        </custom:DefaultSfAvatarView>
+                        <custom:DefaultSfAvatarView Grid.Column="1" ContentType="Default"
+                            AvatarShape="Square"             
+                            HeightRequest="150"
+                            WidthRequest="150"
+                            BorderColor="Blue"
+                            CornerRadius="75">
+                        </custom:DefaultSfAvatarView>
+                    </Grid>
+                </VerticalStackLayout>
+                <VerticalStackLayout>
+                    <Label Style="{StaticResource MediumLabel}" Text="Custom"></Label>
+                    <custom:DefaultSfAvatarView ContentType="Custom"
+                                            HeightRequest="150"
+                                            WidthRequest="150"
+                                            CornerRadius="75"
+                                            ImageSource="avatar.jpg">
+                    </custom:DefaultSfAvatarView>
+                </VerticalStackLayout>
+                <VerticalStackLayout>
+                    <Label Style="{StaticResource MediumLabel}" Text="Initials - Single and Double Character"></Label>
+                    <Grid ColumnDefinitions="*,*">
+                        <custom:DefaultSfAvatarView Grid.Column="0" ContentType="Initials"
+                                            HeightRequest="150"
+                                            WidthRequest="150"
+                                            CornerRadius="75"
+                                            InitialsType="SingleCharacter"
+                                            AvatarName="Ralph Renzo"
+                                            InitialsColor="White"
+                                            FontSize="50"
+                                            FontAttributes="Bold"
+                                            BackgroundColor="Red">
+                        </custom:DefaultSfAvatarView>
+                        <custom:DefaultSfAvatarView Grid.Column="1" ContentType="Initials"
+                                            HeightRequest="150"
+                                            WidthRequest="150"
+                                            CornerRadius="75"
+                                            InitialsType="DoubleCharacter"
+                                            AvatarName="Ralph Renzo"
+                                            InitialsColor="White"
+                                            FontSize="50"
+                                            FontAttributes="Bold"
+                                            BackgroundColor="Blue">
+                        </custom:DefaultSfAvatarView>
+                    </Grid>
+                </VerticalStackLayout>
+                <VerticalStackLayout>
+                    <Label Style="{StaticResource MediumLabel}" Text="Default Avatar Caharacters"></Label>
+                    <custom:DefaultCollectionView ItemsSource="{Binding DefaultCharacters}">
+                        <custom:DefaultCollectionView.ItemsLayout>
+                            <GridItemsLayout Orientation="Horizontal" 
+                                             Span="3"></GridItemsLayout>
+                        </custom:DefaultCollectionView.ItemsLayout>
+                        <custom:DefaultCollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <VerticalStackLayout Padding="5">
+                                    <custom:DefaultSfAvatarView ContentType="AvatarCharacter"
+                                            HeightRequest="50"
+                                            WidthRequest="50"
+                                            CornerRadius="25"
+                                            AvatarCharacter="{Binding Value}">
+                                    </custom:DefaultSfAvatarView>
+                                    <Label Style="{StaticResource SmallLabel}"
+                                           Text="{Binding Name}"></Label>
+                                </VerticalStackLayout>
+                            </DataTemplate>
+                        </custom:DefaultCollectionView.ItemTemplate>
+                    </custom:DefaultCollectionView>
+                </VerticalStackLayout>
+                <VerticalStackLayout>
+                    <Label Style="{StaticResource MediumLabel}" Text="Group View - Both Images and Initials"></Label>
+                    <custom:DefaultSfAvatarView ContentType="Group"
+                                            HeightRequest="150"
+                                            WidthRequest="150"
+                                            CornerRadius="75"
+                                            GroupSource="{Binding CollectionBoth}"
+                                            BackgroundColorMemberPath="Colors"
+                                            InitialsMemberPath="Name"
+                                            ImageSourceMemberPath="ImageSource">
+                    </custom:DefaultSfAvatarView>
+                </VerticalStackLayout>
+                <VerticalStackLayout>
+                    <Label Style="{StaticResource MediumLabel}" Text="Group View - Images Only"></Label>
+                    <custom:DefaultSfAvatarView ContentType="Group"
+                                            HeightRequest="150"
+                                            WidthRequest="150"
+                                            CornerRadius="75"
+                                            GroupSource="{Binding CollectionImages}"
+                                            BackgroundColorMemberPath="Colors"
+                                            InitialsMemberPath="Name"
+                                            ImageSourceMemberPath="ImageSource">
+                    </custom:DefaultSfAvatarView>
+                </VerticalStackLayout>
+                <VerticalStackLayout>
+                    <Label Style="{StaticResource MediumLabel}" Text="Group View - Initials Only"></Label>
+                    <custom:DefaultSfAvatarView ContentType="Group"
+                                            HeightRequest="150"
+                                            WidthRequest="150"
+                                            CornerRadius="75"
+                                            GroupSource="{Binding CollectionInitials}"
+                                            BackgroundColorMemberPath="Colors"
+                                            InitialsMemberPath="Name"
+                                            ImageSourceMemberPath="ImageSource">
+                    </custom:DefaultSfAvatarView>
+                </VerticalStackLayout>
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

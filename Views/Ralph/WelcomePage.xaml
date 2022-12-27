@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:custom="clr-namespace:helloralph.Custom"
+             x:Class="helloralph.Views.WelcomePage">
+    <VerticalStackLayout VerticalOptions="CenterAndExpand">
+        <custom:DefaultSfAvatarView ContentType="Custom"
+                                    ImageSource="ralph.jpg"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="Center"
+                                    BorderColor="Silver"
+                                    CornerRadius="75"
+                                    HeightRequest="150"
+                                    WidthRequest="150">
+        </custom:DefaultSfAvatarView>
+        <Label Text="Hi! I am Ralph" Style="{StaticResource LargeLabel}" HorizontalOptions="CenterAndExpand"></Label>
+    </VerticalStackLayout>
+</ContentPage>

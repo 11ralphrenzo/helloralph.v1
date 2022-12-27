@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:badge="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+             xmlns:vm="clr-namespace:helloralph.ViewModels"
+             xmlns:custom="clr-namespace:helloralph.Custom"
+             x:Class="helloralph.Views.SfBadgePage"
+             Title="{Binding Title}">
+    <ContentPage.BindingContext>
+        <vm:SfBadgeViewModel></vm:SfBadgeViewModel>
+    </ContentPage.BindingContext>
+    <VerticalStackLayout Spacing="10" Padding="0,50">
+        <VerticalStackLayout>
+            <custom:DefaultSfBadgeView HorizontalOptions="Center"
+                                       VerticalOptions="Center">
+                <custom:DefaultSfBadgeView.Content>
+                    <custom:DefaultSfAvatarView ContentType="Custom"
+                                        ImageSource="avatar.jpg"
+                                        WidthRequest="200"
+                                        HeightRequest="200"
+                                        CornerRadius="100"></custom:DefaultSfAvatarView>
+                </custom:DefaultSfBadgeView.Content>
+                <custom:DefaultSfBadgeView.BadgeSettings>
+                    <badge:BadgeSettings TextPadding="10"
+                                         Icon="Available"
+                                         Type="Success"
+                                         Offset="-20,-20"
+                                         Position="BottomRight">
+                     </badge:BadgeSettings>
+                </custom:DefaultSfBadgeView.BadgeSettings>
+            </custom:DefaultSfBadgeView>
+        </VerticalStackLayout>
+        <VerticalStackLayout>
+            <Label Style="{StaticResource MediumLabel}" Text="Default"></Label>
+            <custom:DefaultSfBadgeView BadgeText="20"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center">
+                <custom:DefaultSfBadgeView.Content>
+                    <Button Text="Primary"
+                            BackgroundColor="Silver"
+                            WidthRequest="120" 
+                            HeightRequest="60"></Button>
+                </custom:DefaultSfBadgeView.Content>
+            </custom:DefaultSfBadgeView>
+        </VerticalStackLayout>
+        <VerticalStackLayout>
+            <Label Style="{StaticResource MediumLabel}" Text="Customization: Font Size, Attribute, Family, Color, Padding"></Label>
+            <custom:DefaultSfBadgeView BadgeText="20"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center">
+                <custom:DefaultSfBadgeView.Content>
+                    <Button Text="Primary"
+                            BackgroundColor="Silver"
+                            WidthRequest="120" 
+                            HeightRequest="60"></Button>
+                </custom:DefaultSfBadgeView.Content>
+                <custom:DefaultSfBadgeView.BadgeSettings>
+                    <badge:BadgeSettings FontSize="15"
+                                         FontAttributes="Bold"
+                                         FontFamily="Serif"
+                                         TextColor="White"
+                                         TextPadding="5"></badge:BadgeSettings>
+                </custom:DefaultSfBadgeView.BadgeSettings>
+            </custom:DefaultSfBadgeView>
+        </VerticalStackLayout>
+        <VerticalStackLayout>
+            <Label Style="{StaticResource MediumLabel}" Text="Customization: Border Color"></Label>
+            <custom:DefaultSfBadgeView HorizontalOptions="Center"
+                                       VerticalOptions="Center"
+                                       BadgeText="10">
+                <custom:DefaultSfBadgeView.Content>
+                    <Button Text="Primary"
+                            BackgroundColor="Silver"
+                            WidthRequest="120" 
+                            HeightRequest="60"></Button>
+                </custom:DefaultSfBadgeView.Content>
+                <custom:DefaultSfBadgeView.BadgeSettings>
+                    <badge:BadgeSettings BorderWidth="2"
+                                         Stroke="Red"
+                                         BadgeAlignment="Start"></badge:BadgeSettings>
+                </custom:DefaultSfBadgeView.BadgeSettings>
+            </custom:DefaultSfBadgeView>
+        </VerticalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>

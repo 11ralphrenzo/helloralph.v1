@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:custom="clr-namespace:helloralph.Custom"
+             xmlns:m="clr-namespace:helloralph.Models"
+             xmlns:vm="clr-namespace:helloralph.ViewModels"
+             x:Class="helloralph.Views.RESTIntegrationPage"
+             x:DataType="vm:RESTIntegrationViewModel">
+    <ContentPage.BindingContext>
+        <vm:RESTIntegrationViewModel></vm:RESTIntegrationViewModel>
+    </ContentPage.BindingContext>
+    <CollectionView ItemsSource="{Binding RestApis}"
+                    SelectionMode="None">
+        <CollectionView.Header>
+            <custom:DefaultPageTitleView Title="{Binding Title}"></custom:DefaultPageTitleView>
+        </CollectionView.Header>
+        <CollectionView.ItemTemplate>
+            <DataTemplate x:DataType="m:RESTApiModel">
+                <custom:DefaultListItemView BindingContext="{Binding .}"
+                        Tag="{Binding Tag}">
+                    <custom:DefaultListItemView.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:RESTIntegrationViewModel}}, Path=ExecuteRestCommand}"
+                                              CommandParameter="{Binding .}"/>
+                    </custom:DefaultListItemView.GestureRecognizers>
+                </custom:DefaultListItemView>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
+</ContentPage>

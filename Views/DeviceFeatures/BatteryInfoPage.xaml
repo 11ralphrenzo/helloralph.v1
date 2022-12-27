@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="helloralph.Views.BatteryInfoPage"
+             xmlns:custom="clr-namespace:helloralph.Custom"
+             xmlns:m="clr-namespace:helloralph.Models"
+             xmlns:vm="clr-namespace:helloralph.ViewModels"
+             xmlns:utils="clr-namespace:helloralph.Utilities"
+             x:DataType="vm:BatteryInfoViewModel">
+    <ContentPage.BindingContext>
+        <vm:BatteryInfoViewModel></vm:BatteryInfoViewModel>
+    </ContentPage.BindingContext>
+    <CollectionView ItemsSource="{Binding BatteryInfos}">
+        <CollectionView.Header>
+            <custom:DefaultPageTitleView Title="{Binding Title}"></custom:DefaultPageTitleView>
+        </CollectionView.Header>
+        <CollectionView.ItemTemplate>
+            <DataTemplate x:DataType="m:BatteryInfoModel">
+                <custom:DefaultListItemView BindingContext="{Binding .}"
+                                            Toggled="{Binding Source={RelativeSource AncestorType={x:Type vm:BatteryInfoViewModel}}, Path=ToggledCommand}"
+                                            Tag="{Binding Tag}">
+                    <custom:DefaultListItemView.Triggers>
+                        <DataTrigger TargetType="custom:DefaultListItemView" Value="Status" Binding="{Binding Tag}">
+                            <Setter Property="DetailsFormattedString" Value="{Binding Source={RelativeSource AncestorType={x:Type vm:BatteryInfoViewModel}}, Path=FormattedStatus}"></Setter>
+                        </DataTrigger>
+                        <DataTrigger TargetType="custom:DefaultListItemView" Value="LowPower" Binding="{Binding Tag}">
+                            <Setter Property="DetailsFormattedString" Value="{Binding Source={RelativeSource AncestorType={x:Type vm:BatteryInfoViewModel}}, Path=FormattedLowPower}"></Setter>
+                        </DataTrigger>
+                        <DataTrigger TargetType="custom:DefaultListItemView" Value="PowerSource" Binding="{Binding Tag}">
+                            <Setter Property="DetailsFormattedString" Value="{Binding Source={RelativeSource AncestorType={x:Type vm:BatteryInfoViewModel}}, Path=FormattedPowerSource}"></Setter>
+                        </DataTrigger>
+                    </custom:DefaultListItemView.Triggers>
+                </custom:DefaultListItemView>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
+</ContentPage>

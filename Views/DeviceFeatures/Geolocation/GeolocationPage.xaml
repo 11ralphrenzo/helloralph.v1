@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:custom="clr-namespace:helloralph.Custom"
+             xmlns:vm="clr-namespace:helloralph.ViewModels"
+             x:Class="helloralph.Views.GeolocationPage"
+             x:DataType="vm:GeolocationViewModel">
+    <ContentPage.BindingContext>
+        <vm:GeolocationViewModel></vm:GeolocationViewModel>
+    </ContentPage.BindingContext>
+    <custom:DefaultCollectionView ItemsSource="{Binding Items}">
+        <custom:DefaultCollectionView.Header>
+            <VerticalStackLayout>
+                <custom:DefaultPageTitleView Title="{Binding Title}"></custom:DefaultPageTitleView>
+                <ActivityIndicator Color="Silver" IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}"></ActivityIndicator>
+            </VerticalStackLayout>
+        </custom:DefaultCollectionView.Header>
+        <custom:DefaultCollectionView.ItemTemplate>
+            <DataTemplate>
+                <custom:DefaultListItemView BindingContext="{Binding .}">
+                    <custom:DefaultListItemView.GestureRecognizers>
+                        <TapGestureRecognizer CommandParameter="{Binding .}"
+                                              Command="{Binding Source={RelativeSource AncestorType={x:Type vm:GeolocationViewModel}}, Path=TapCommand}">
+                        </TapGestureRecognizer>
+                    </custom:DefaultListItemView.GestureRecognizers>
+                </custom:DefaultListItemView>
+            </DataTemplate>
+        </custom:DefaultCollectionView.ItemTemplate>
+    </custom:DefaultCollectionView>
+</ContentPage>

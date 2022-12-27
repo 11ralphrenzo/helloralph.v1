@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:helloralph.ViewModels"
+             xmlns:m="clr-namespace:helloralph.Models"
+             xmlns:b="clr-namespace:helloralph.Behaviors"
+             x:Class="helloralph.Views.GetLocationPage"
+             x:DataType="vm:GetLocationViewModel">
+    <CollectionView ItemsSource="{Binding Locations}"
+                    SelectionMode="None">
+        <CollectionView.Header>
+            <Frame Style="{StaticResource DefaultListItemFrame}">
+                <Grid ColumnDefinitions = "*, Auto">
+                    <Entry Placeholder="Enter Address" Text="{Binding Address}" HorizontalOptions="FillAndExpand"/>
+                    <Button Grid.Column="1" Text="Search" Command="{Binding SearchCommand}" CommandParameter="{Binding Address}"></Button>
+                </Grid>
+            </Frame>
+        </CollectionView.Header>
+        <CollectionView.EmptyView>
+            <Label Text="NO RESULTS" TextColor="Black" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"></Label>
+        </CollectionView.EmptyView>
+        <CollectionView.ItemTemplate>
+            <DataTemplate x:DataType="m:GeocodingLocationModel">
+                <Frame Style="{StaticResource DefaultListItemFrame}">
+                    <VerticalStackLayout>
+                        <Label Style="{StaticResource MediumLabel}" FontAttributes="Bold" Margin="0,0,0,10" Text="{Binding Placemark.Locality}"></Label>
+                        <Label Style="{StaticResource BaseLabel}" Text="{Binding Placemark.AdminArea, StringFormat='Admin Area: {0}'}"></Label>
+                        <Label Style="{StaticResource BaseLabel}" Text="{Binding Placemark.CountryCode, StringFormat='Country Code: {0}'}"></Label>
+                        <Label Style="{StaticResource BaseLabel}" Text="{Binding Placemark.CountryName, StringFormat='Country Name: {0}'}"></Label>
+                        <Label Style="{StaticResource BaseLabel}" Text="{Binding Placemark.FeatureName, StringFormat='Feature Name: {0}'}"></Label>
+                        <Label Style="{StaticResource BaseLabel}" Text="{Binding Placemark.Location.Latitude, StringFormat='Latitude: {0}'}"></Label>
+                        <Label Style="{StaticResource BaseLabel}" Text="{Binding Placemark.Location.Longitude, StringFormat='Longitude: {0}'}"></Label>
+                        <Label Style="{StaticResource BaseLabel}" Text="{Binding Placemark.PostalCode, StringFormat='Postal Code: {0}'}"></Label>
+                        <Label Style="{StaticResource BaseLabel}" Text="{Binding Placemark.SubAdminArea, StringFormat='Sub Admin Area: {0}'}"></Label>
+                        <Label Style="{StaticResource BaseLabel}" Text="{Binding Placemark.SubLocality, StringFormat='Sub Locality: {0}'}"></Label>
+                        <Label Style="{StaticResource BaseLabel}" Text="{Binding Placemark.SubThoroughfare, StringFormat='Sub Thoroughfare: {0}'}"></Label>
+                        <Label Style="{StaticResource BaseLabel}" Text="{Binding Placemark.Thoroughfare, StringFormat='Thoroughfare: {0}'}"></Label>
+                    </VerticalStackLayout>
+                </Frame>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
+</ContentPage>
