@@ -34,6 +34,8 @@
                     ContentTemplate="{DataTemplate views:ColorMakerPage}"/>
         <ShellContent Title="Perfect Pay"
             ContentTemplate="{DataTemplate views:PerfectPayPage}"/>
+        <ShellContent Title="Code Quotes"
+            ContentTemplate="{DataTemplate views:CodeQuotesPage}"/>
     </FlyoutItem>
     <FlyoutItem Title="Syncfusion"
                 FlyoutDisplayOptions="AsMultipleItems">

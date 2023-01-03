@@ -70,6 +70,8 @@
 	  <None Remove="Resources\Utilities\" />
 	  <None Remove="Views\Udemy\" />
 	  <None Remove="ViewModels\Udemy\" />
+	  <None Remove="ColorUtility" />
+	  <None Remove="Resources\Raw\quotes.txt" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -78,6 +80,7 @@
 	  <PackageReference Include="Syncfusion.Maui.Barcode" Version="20.2.45" />
 	  <PackageReference Include="Syncfusion.Maui.Core" Version="20.2.45" />
 	  <PackageReference Include="Syncfusion.Maui.ListView" Version="20.2.45" />
+	  <PackageReference Include="ColorUtility" Version="1.0.0" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -171,6 +174,9 @@
 	  <MauiXaml Update="Views\Udemy\PerfectPayPage.xaml">
 	    <SubType></SubType>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\Udemy\CodeQuotesPage.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -182,4 +188,7 @@
 	  <Folder Include="ViewModels\Udemy\" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <BundleResource Include="Resources\Raw\quotes.txt" />
+	</ItemGroup>
 </Project>
