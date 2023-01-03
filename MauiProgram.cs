@@ -34,6 +34,7 @@ public static class MauiProgram
         builder.Services.AddSingleton<ColorMakerPage>();
         builder.Services.AddSingleton<PerfectPayPage>();
         builder.Services.AddSingleton<CodeQuotesPage>();
+        builder.Services.AddSingleton<HangmanPage>();
         builder.Services.AddSingleton<SfAvatarPage>();
         builder.Services.AddSingleton<SfBarcodeGeneratorPage>();
         builder.Services.AddSingleton<SfBadgePage>();
@@ -57,6 +58,7 @@ public static class MauiProgram
         builder.Services.AddSingleton<ColorMakerViewModel>();
         builder.Services.AddSingleton<PerfectPayViewModel>();
         builder.Services.AddSingleton<CodeQuotesViewModel>();
+        builder.Services.AddSingleton<HangmanViewModel>();
         builder.Services.AddSingleton<SfAvatarViewModel>();
         builder.Services.AddSingleton<SfBarcodeGeneratorViewModel>();
         builder.Services.AddSingleton<SfBadgeViewModel>();

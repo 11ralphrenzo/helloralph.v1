@@ -36,6 +36,8 @@
             ContentTemplate="{DataTemplate views:PerfectPayPage}"/>
         <ShellContent Title="Code Quotes"
             ContentTemplate="{DataTemplate views:CodeQuotesPage}"/>
+        <ShellContent Title="Hangman Game"
+            ContentTemplate="{DataTemplate views:HangmanPage}"/>
     </FlyoutItem>
     <FlyoutItem Title="Syncfusion"
                 FlyoutDisplayOptions="AsMultipleItems">

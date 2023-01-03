@@ -72,6 +72,14 @@
 	  <None Remove="ViewModels\Udemy\" />
 	  <None Remove="ColorUtility" />
 	  <None Remove="Resources\Raw\quotes.txt" />
+	  <None Remove="Resources\Images\img0.jpg" />
+	  <None Remove="Resources\Images\img1.jpg" />
+	  <None Remove="Resources\Images\img2.jpg" />
+	  <None Remove="Resources\Images\img3.jpg" />
+	  <None Remove="Resources\Images\img4.jpg" />
+	  <None Remove="Resources\Images\img5.jpg" />
+	  <None Remove="Resources\Images\img6.jpg" />
+	  <None Remove="Models\Udemy\" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -177,6 +185,9 @@
 	  <MauiXaml Update="Views\Udemy\CodeQuotesPage.xaml">
 	    <SubType></SubType>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\Udemy\HangmanPage.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -186,9 +197,11 @@
 	  <Folder Include="Resources\Utilities\" />
 	  <Folder Include="Views\Udemy\" />
 	  <Folder Include="ViewModels\Udemy\" />
+	  <Folder Include="Models\Udemy\" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <BundleResource Include="Resources\Raw\quotes.txt" />
+	  <BundleResource Include="Resources\Images\img3.jpg" />
 	</ItemGroup>
 </Project>
