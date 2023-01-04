@@ -9,23 +9,90 @@
     </ContentPage.BindingContext>
     <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,*"
           RowSpacing="10">
-        <Label 
-            Text="Errors: 0 of 6"
-            HorizontalTextAlignment="Center"
-            FontAttributes="Bold"></Label>
+        <Label HorizontalTextAlignment="Center"
+            FontAttributes="Bold">
+            <Label.Text>
+                <MultiBinding StringFormat="Errors: {0} of {1}"> 
+                    <Binding Path="Mistakes"></Binding>
+                    <Binding Path="MaxAttempt"></Binding>
+                </MultiBinding>
+            </Label.Text>
+
+        </Label>
         <Image Grid.Row="1"
-               Source="img0.jpg"
-               HeightRequest="200"></Image>
+               HeightRequest="200">
+            <Image.Triggers>
+                <DataTrigger TargetType="Image"
+                             Binding="{Binding Mistakes}"
+                             Value="0">
+                    <Setter Property="Source"
+                            Value="img0.jpg"></Setter>
+                </DataTrigger>
+                <DataTrigger TargetType="Image"
+                             Binding="{Binding Mistakes}"
+                             Value="1">
+                    <Setter Property="Source"
+                            Value="img1.jpg"></Setter>
+                </DataTrigger>
+                <DataTrigger TargetType="Image"
+                             Binding="{Binding Mistakes}"
+                             Value="2">
+                    <Setter Property="Source"
+                            Value="img2.jpg"></Setter>
+                </DataTrigger>
+                <DataTrigger TargetType="Image"
+                             Binding="{Binding Mistakes}"
+                             Value="3">
+                    <Setter Property="Source"
+                            Value="img3.jpg"></Setter>
+                </DataTrigger>
+                <DataTrigger TargetType="Image"
+                             Binding="{Binding Mistakes}"
+                             Value="4">
+                    <Setter Property="Source"
+                            Value="img4.jpg"></Setter>
+                </DataTrigger>
+                <DataTrigger TargetType="Image"
+                             Binding="{Binding Mistakes}"
+                             Value="5">
+                    <Setter Property="Source"
+                            Value="img5.jpg"></Setter>
+                </DataTrigger>
+                <DataTrigger TargetType="Image"
+                             Binding="{Binding Mistakes}"
+                             Value="6">
+                    <Setter Property="Source"
+                            Value="img6.jpg"></Setter>
+                </DataTrigger>
+            </Image.Triggers>
+        </Image>
         <Label Grid.Row="2"
                HorizontalTextAlignment="Center"
                Text="{Binding Spotlight}"
                FontSize="Title"></Label>
         <Label Grid.Row="3"
                HorizontalTextAlignment="Center"
-               Text="You Lost!"></Label>
+               Text="{Binding Message}"></Label>
         <Button Grid.Row="4"
                 Text="Reset"
-                HorizontalOptions="Center"></Button>
+                HorizontalOptions="Center"
+                IsVisible="false"
+                Command="{Binding ResetCommand}">
+            <Button.Triggers>
+                <DataTrigger TargetType="Button"
+                                Binding="{Binding Status}"
+                                Value="Lost">
+                    <Setter Property="IsVisible"
+                            Value="true"></Setter>
+                </DataTrigger>
+                <DataTrigger TargetType="Button"
+                            Binding="{Binding Status}"
+                            Value="Won">
+                    <Setter Property="IsVisible"
+                            Value="true"></Setter>
+                </DataTrigger>
+            </Button.Triggers>
+        </Button>
         <FlexLayout Grid.Row="5"
                     x:Name="flLetters"
                     Margin="10,20"
@@ -36,9 +103,32 @@
                 <DataTemplate>
                     <Button HeightRequest="50"
                             WidthRequest="50"
+                            IsEnabled="{Binding IsEnabled}"
                             Text="{Binding Letter}"
                             Command="{Binding Source={RelativeSource AncestorType={x:Type vm:HangmanViewModel}}, Path=SelectLetterCommand}"
-                            CommandParameter="{Binding Letter}"></Button>
+                            CommandParameter="{Binding .}">
+                        <Button.Triggers>
+                            <!--<DataTrigger TargetType="Button"
+                                         Binding="{Binding Source={RelativeSource AncestorType={x:Type vm:HangmanViewModel}}, Path=Status}"
+                                         Value="Start">
+                                <Setter Property="IsEnabled"
+                                        Value="True"></Setter>
+                            </DataTrigger>-->
+                            <DataTrigger TargetType="Button"
+                                         Binding="{Binding Source={RelativeSource AncestorType={x:Type vm:HangmanViewModel}}, Path=Status}"
+                                         Value="Lost">
+                                <Setter Property="IsEnabled"
+                                        Value="False"></Setter>
+                            </DataTrigger>
+                            <DataTrigger TargetType="Button"
+                                         Binding="{Binding Source={RelativeSource AncestorType={x:Type vm:HangmanViewModel}}, Path=Status}"
+                                         Value="Won">
+                                <Setter Property="IsEnabled"
+                                        Value="False"></Setter>
+                            </DataTrigger>
+                        </Button.Triggers>
+
+                    </Button>
                 </DataTemplate>
             </BindableLayout.ItemTemplate>
 

@@ -34,5 +34,12 @@ namespace helloralph.Utilities
             CaptureVideo
         }
 
+        public enum GameStatus
+        {
+            Start,
+            Playing,
+            Lost,
+            Won
+        }
     }
 }

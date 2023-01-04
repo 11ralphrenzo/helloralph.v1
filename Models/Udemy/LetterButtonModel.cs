@@ -10,6 +10,7 @@ namespace helloralph.Models
 		public LetterButtonModel(char letter)
 		{
 			Letter = letter.ToString();
+			IsEnabled = true;
 		}
 	}
 }

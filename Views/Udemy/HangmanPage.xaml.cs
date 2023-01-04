@@ -6,4 +6,9 @@ public partial class HangmanPage : ContentPage
 	{
 		InitializeComponent();
 	}
+
+  //  void Button_Clicked(System.Object sender, System.EventArgs e)
+  //  {
+		//(sender as Button).IsEnabled = false;
+  //  }
 }
