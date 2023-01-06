@@ -1,4 +1,4 @@
-﻿using CommunityToolkit.Maui;
+using CommunityToolkit.Maui;
 using helloralph.Custom;
 using helloralph.Utilities.DefaultHttpClient;
 using helloralph.ViewModels;
@@ -35,6 +35,7 @@ public static class MauiProgram
         builder.Services.AddSingleton<PerfectPayPage>();
         builder.Services.AddSingleton<CodeQuotesPage>();
         builder.Services.AddSingleton<HangmanPage>();
+        builder.Services.AddSingleton<BMICalculatorPage>();
         builder.Services.AddSingleton<SfAvatarPage>();
         builder.Services.AddSingleton<SfBarcodeGeneratorPage>();
         builder.Services.AddSingleton<SfBadgePage>();
@@ -59,6 +60,7 @@ public static class MauiProgram
         builder.Services.AddSingleton<PerfectPayViewModel>();
         builder.Services.AddSingleton<CodeQuotesViewModel>();
         builder.Services.AddSingleton<HangmanViewModel>();
+        builder.Services.AddSingleton<BMICalculatorViewModel>();
         builder.Services.AddSingleton<SfAvatarViewModel>();
         builder.Services.AddSingleton<SfBarcodeGeneratorViewModel>();
         builder.Services.AddSingleton<SfBadgeViewModel>();
