@@ -209,6 +209,9 @@
 	  <MauiXaml Update="Views\Udemy\Mauiverter\ConverterPage.xaml">
 	    <SubType></SubType>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\Udemy\CalculatorPage.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
 	</ItemGroup>
 
 	<ItemGroup>

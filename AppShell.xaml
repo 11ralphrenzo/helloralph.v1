@@ -42,6 +42,8 @@
             ContentTemplate="{DataTemplate views:BMICalculatorPage}"/>
         <ShellContent Title="MAUIVERTER"
             ContentTemplate="{DataTemplate views:MenuPage}"/>
+        <ShellContent Title="Calculator"
+            ContentTemplate="{DataTemplate views:CalculatorPage}"/>
     </FlyoutItem>
     <FlyoutItem Title="Syncfusion"
                 FlyoutDisplayOptions="AsMultipleItems">

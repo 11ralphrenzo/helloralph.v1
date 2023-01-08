@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xaml-comp compile="true" ?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <Style TargetType="VerticalStackLayout"
+           x:Key="VStackCalc">
+        <Setter Property="VerticalOptions"
+                Value="CenterAndExpand"></Setter>
+        <Setter Property="Padding"
+                Value="0,0,25,0"></Setter>
+
+    </Style>
+
+    <Style TargetType="Label"
+           x:Key="LabelDefaultCalc">
+        <Setter Property="TextColor"
+                Value="{AppThemeBinding Light={StaticResource Black},
+                            Dark={StaticResource White}}"></Setter>
+        <Setter Property="HorizontalTextAlignment"
+                Value="End"></Setter>
+    </Style>
+
+    <Style TargetType="Label"
+           x:Key="LabelOperations">
+        <Setter Property="FontSize">
+            <Setter.Value>
+                <OnIdiom Default="25" Desktop="50"></OnIdiom>
+            </Setter.Value>
+
+        </Setter>
+    </Style>
+
+    <Style TargetType="Label"
+           x:Key="LabelResult">
+        <Setter Property="FontSize">
+            <Setter.Value>
+                <OnIdiom Default="50" Desktop="75"></OnIdiom>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="FontAttributes"
+                Value="Bold"></Setter>
+    </Style>
+
+    <Style TargetType="BoxView"
+           x:Key="BVCalc">
+        <Setter Property="Color"
+                Value="{AppThemeBinding Light={StaticResource Primary},
+                    Dark={StaticResource Gray200}}"></Setter>
+        <Setter Property="CornerRadius"
+                Value="30,30,0,0"></Setter>
+    </Style>
+</ResourceDictionary>
