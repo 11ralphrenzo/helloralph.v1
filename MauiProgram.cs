@@ -26,6 +26,8 @@ public static class MauiProgram
                 fonts.AddFont("Jaldi-Bold.ttf", "JaldiBold");
                 fonts.AddFont("Jaldi-Regular.ttf", "JaldiRegular");
                 fonts.AddFont("Lato-Regular.ttf", "LatoRegular");
+                fonts.AddFont("fontello.ttf", "Icons");
+
             });
 
         //Services - Views
@@ -36,6 +38,8 @@ public static class MauiProgram
         builder.Services.AddSingleton<CodeQuotesPage>();
         builder.Services.AddSingleton<HangmanPage>();
         builder.Services.AddSingleton<BMICalculatorPage>();
+        builder.Services.AddSingleton<MenuPage>();
+        builder.Services.AddTransient<ConverterPage>();
         builder.Services.AddSingleton<SfAvatarPage>();
         builder.Services.AddSingleton<SfBarcodeGeneratorPage>();
         builder.Services.AddSingleton<SfBadgePage>();
@@ -61,6 +65,8 @@ public static class MauiProgram
         builder.Services.AddSingleton<CodeQuotesViewModel>();
         builder.Services.AddSingleton<HangmanViewModel>();
         builder.Services.AddSingleton<BMICalculatorViewModel>();
+        builder.Services.AddSingleton<MenuViewModel>();
+        builder.Services.AddTransient<ConverterViewModel>();
         builder.Services.AddSingleton<SfAvatarViewModel>();
         builder.Services.AddSingleton<SfBarcodeGeneratorViewModel>();
         builder.Services.AddSingleton<SfBadgeViewModel>();

@@ -40,6 +40,8 @@
             ContentTemplate="{DataTemplate views:HangmanPage}"/>
         <ShellContent Title="BMI Calculator"
             ContentTemplate="{DataTemplate views:BMICalculatorPage}"/>
+        <ShellContent Title="MAUIVERTER"
+            ContentTemplate="{DataTemplate views:MenuPage}"/>
     </FlyoutItem>
     <FlyoutItem Title="Syncfusion"
                 FlyoutDisplayOptions="AsMultipleItems">

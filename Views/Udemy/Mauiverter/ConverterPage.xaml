@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:vm="clr-namespace:helloralph.ViewModels"
+             x:Class="helloralph.Views.ConverterPage"
+             Title="{Binding QuantityName}">
+    <ContentPage.BindingContext>
+        <vm:ConverterViewModel></vm:ConverterViewModel>
+    </ContentPage.BindingContext>
+    <Grid RowDefinitions="*,*">
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0,1">
+                <GradientStop Offset="0.0" Color="LightPink"></GradientStop>
+                <GradientStop Offset="1" Color="LightBlue"></GradientStop>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <VerticalStackLayout VerticalOptions="CenterAndExpand">
+            <Entry FontSize="100"
+                   HorizontalTextAlignment="Center"
+                   Text="{Binding FromValue}"
+                   TextColor="White">
+                <Entry.Behaviors>
+                    <toolkit:EventToCommandBehavior EventName="TextChanged"
+                                              Command="{Binding ConvertCommand}"></toolkit:EventToCommandBehavior>
+                </Entry.Behaviors>
+            </Entry>
+            <Picker HorizontalTextAlignment="Center"
+                    TextColor="White"
+                    ItemsSource="{Binding FromMeasures}"
+                    SelectedItem="{Binding CurrrentFromMeasure}">
+                <Picker.Behaviors>
+                    <toolkit:EventToCommandBehavior EventName="SelectedIndexChanged"
+                            Command="{Binding ConvertCommand}"></toolkit:EventToCommandBehavior>
+                </Picker.Behaviors>
+            </Picker>
+        </VerticalStackLayout>
+        <VerticalStackLayout Grid.Row="1"
+                             VerticalOptions="CenterAndExpand">
+            <Label FontSize="100"
+                   HorizontalTextAlignment="Center"
+                   Text="{Binding ToValue, StringFormat='{0:0.##}'}"
+                   TextColor="White"></Label>
+            <Picker HorizontalTextAlignment="Center"
+                    TextColor="White"
+                    ItemsSource="{Binding ToMeasures}"
+                    SelectedItem="{Binding CurrrentToMeasure}">
+                <Picker.Behaviors>
+                    <toolkit:EventToCommandBehavior EventName="SelectedIndexChanged"
+                            Command="{Binding ConvertCommand}"></toolkit:EventToCommandBehavior>
+                </Picker.Behaviors>
+            </Picker>
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>
