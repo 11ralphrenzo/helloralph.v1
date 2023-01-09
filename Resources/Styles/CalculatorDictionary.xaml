@@ -24,7 +24,7 @@
            x:Key="LabelOperations">
         <Setter Property="FontSize">
             <Setter.Value>
-                <OnIdiom Default="25" Desktop="50"></OnIdiom>
+                <x:OnPlatform Default="40" MacCatalyst="50"></x:OnPlatform>
             </Setter.Value>
 
         </Setter>
@@ -34,7 +34,7 @@
            x:Key="LabelResult">
         <Setter Property="FontSize">
             <Setter.Value>
-                <OnIdiom Default="50" Desktop="75"></OnIdiom>
+                <x:OnPlatform Default="50" MacCatalyst="75"></x:OnPlatform>
             </Setter.Value>
         </Setter>
         <Setter Property="FontAttributes"
@@ -48,5 +48,17 @@
                     Dark={StaticResource Gray200}}"></Setter>
         <Setter Property="CornerRadius"
                 Value="30,30,0,0"></Setter>
+    </Style>
+
+    <Style TargetType="Button"
+           x:Key="ButtonDefaultCalc">
+        <Setter Property="BackgroundColor"
+                Value="{AppThemeBinding Dark={StaticResource Cyan100Accent},
+                Light={StaticResource Cyan200Accent}}"></Setter>
+        <Setter Property="FontSize"
+                Value="25"></Setter>
+        <Setter Property="TextColor"
+                Value="White"></Setter>
+
     </Style>
 </ResourceDictionary>

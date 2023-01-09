@@ -7,13 +7,32 @@
     <ContentPage.BindingContext>
         <vm:CalculatorViewModel></vm:CalculatorViewModel>
     </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style BasedOn="{StaticResource ButtonDefaultCalc}"
+                   TargetType="Button">
+            </Style>
+            <Style BasedOn="{StaticResource ButtonDefaultCalc}"
+                   TargetType="Button"
+                   x:Key="ButtonYellow">
+                <Setter Property="TextColor"
+                        Value="{StaticResource Yellow100Accent}"></Setter>
+            </Style>
+            <Style BasedOn="{StaticResource ButtonDefaultCalc}"
+                   TargetType="Button"
+                   x:Key="ButtonRed">
+                <Setter Property="TextColor"
+                        Value="Red"></Setter>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <Grid RowDefinitions=".4*,.6*">
         <VerticalStackLayout Style="{StaticResource VStackCalc}">
             <Label StyleClass="LabelDefaultCalc, LabelOperations"
-                   Text="5 * 5"
+                   Text="{Binding Formula}"
                    HorizontalTextAlignment="End"></Label>
             <Label Style="{StaticResource LabelResult}"
-                   Text="25"
+                   Text="{Binding Result}"
                    HorizontalTextAlignment="End"></Label>
         </VerticalStackLayout>
         <Grid Grid.Row="1"
@@ -25,13 +44,106 @@
             <!--<BoxView Style="{StaticResource BVCacl}"
                      Grid.ColumnSpan="4"
                      Grid.RowSpan="5"></BoxView>-->
-            <Button Text="AC" ></Button>
+            <Button Text="AC"
+                    Style="{StaticResource ButtonYellow}"
+                    Command="{Binding ResetCommand}"></Button>
             <Button Grid.Column="1"
-                    Text="⌫" ></Button>
+                    Text="⌫"
+                    Style="{StaticResource ButtonYellow}"
+                    Command="{Binding BackspaceCommand}"></Button>
             <Button Grid.Column="2"
-                    Text="%" ></Button>
+                    Text="%"
+                    Style="{StaticResource ButtonYellow}"
+                    Command="{Binding OperationCommand}"
+                    CommandParameter=" % "></Button>
             <Button Grid.Column="3"
-                Text="/" ></Button>
+                    Text="/"
+                    Style="{StaticResource ButtonRed}"
+                    Command="{Binding OperationCommand}"
+                    CommandParameter=" / "></Button>
+
+            <Button Grid.Row="1"
+                    Grid.Column="0"
+                    Text="7"
+                    Command="{Binding OperationCommand}"
+                    CommandParameter="7"></Button>
+            <Button Grid.Row="1"
+                    Grid.Column="1"
+                    Text="8"
+                    Command="{Binding OperationCommand}"
+                    CommandParameter="8"></Button>
+            <Button Grid.Row="1"
+                    Grid.Column="2"
+                    Text="9"
+                    Command="{Binding OperationCommand}"
+                    CommandParameter="9"></Button>
+            <Button Grid.Row="1"
+                    Grid.Column="3"
+                    Text="*"
+                    Style="{StaticResource ButtonRed}"
+                    Command="{Binding OperationCommand}"
+                    CommandParameter=" * "></Button>
+
+            <Button Grid.Row="2"
+                    Grid.Column="0"
+                    Text="4"
+                    Command="{Binding OperationCommand}"
+                    CommandParameter="4"></Button>
+            <Button Grid.Row="2"
+                    Grid.Column="1"
+                    Text="5"
+                    Command="{Binding OperationCommand}"
+                    CommandParameter="5"></Button>
+            <Button Grid.Row="2"
+                    Grid.Column="2"
+                    Text="6"
+                    Command="{Binding OperationCommand}"
+                    CommandParameter="6"></Button>
+            <Button Grid.Row="2"
+                    Grid.Column="3"
+                    Text="-"
+                    Style="{StaticResource ButtonRed}"
+                    Command="{Binding OperationCommand}"
+                    CommandParameter=" - "></Button>
+
+            <Button Grid.Row="3"
+                    Grid.Column="0"
+                    Text="1"
+                    Command="{Binding OperationCommand}"
+                    CommandParameter="1"></Button>
+            <Button Grid.Row="3"
+                    Grid.Column="1"
+                    Text="2"
+                    Command="{Binding OperationCommand}"
+                    CommandParameter="2"></Button>
+            <Button Grid.Row="3"
+                    Grid.Column="2"
+                    Text="3"
+                    Command="{Binding OperationCommand}"
+                    CommandParameter="3"></Button>
+            <Button Grid.Row="3"
+                    Grid.Column="3"
+                    Text="+"
+                    Style="{StaticResource ButtonRed}"
+                    Command="{Binding OperationCommand}"
+                    CommandParameter=" + "></Button>
+
+            <Button Grid.Row="4"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Text="0"
+                    Command="{Binding OperationCommand}"
+                    CommandParameter="0"></Button>
+            <Button Grid.Row="4"
+                    Grid.Column="2"
+                    Text="."
+                    Command="{Binding OperationCommand}"
+                    CommandParameter="."></Button>
+            <Button Grid.Row="4"
+                    Grid.Column="3"
+                    Text="="
+                    Style="{StaticResource ButtonRed}"
+                    Command="{Binding CalculateCommand}"></Button>
         </Grid>
     </Grid>
 </ContentPage>
