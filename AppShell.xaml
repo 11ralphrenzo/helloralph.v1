@@ -44,6 +44,8 @@
             ContentTemplate="{DataTemplate views:MenuPage}"/>
         <ShellContent Title="Calculator"
             ContentTemplate="{DataTemplate views:CalculatorPage}"/>
+         <ShellContent Title="Weather"
+            ContentTemplate="{DataTemplate views:WeatherPage}"/>
     </FlyoutItem>
     <FlyoutItem Title="Syncfusion"
                 FlyoutDisplayOptions="AsMultipleItems">

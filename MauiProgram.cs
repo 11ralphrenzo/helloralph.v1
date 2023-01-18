@@ -3,6 +3,7 @@ using helloralph.Custom;
 using helloralph.Utilities.DefaultHttpClient;
 using helloralph.ViewModels;
 using helloralph.Views;
+using SkiaSharp.Views.Maui.Controls.Hosting;
 using Syncfusion.Maui.Core.Hosting;
 using Syncfusion.Maui.ListView.Hosting;
 
@@ -15,6 +16,7 @@ public static class MauiProgram
 		var builder = MauiApp.CreateBuilder();
 		builder
 			.UseMauiApp<App>()
+            .UseSkiaSharp()
             .UseMauiCommunityToolkit()
             .ConfigureSyncfusionCore()
             .ConfigureFonts(fonts =>
@@ -41,6 +43,7 @@ public static class MauiProgram
         builder.Services.AddSingleton<MenuPage>();
         builder.Services.AddTransient<ConverterPage>();
         builder.Services.AddSingleton<CalculatorPage>();
+        builder.Services.AddSingleton<WeatherPage>();
 
         builder.Services.AddSingleton<SfAvatarPage>();
         builder.Services.AddSingleton<SfBarcodeGeneratorPage>();
@@ -59,6 +62,7 @@ public static class MauiProgram
         builder.Services.AddSingleton<MediaPickerPage>();
         builder.Services.AddTransient<PickOrCapturePhotoPage>();
         builder.Services.AddSingleton<CalculatorViewModel>();
+        builder.Services.AddSingleton<WeatherViewModel>();
 
         //Services - ViewModels
         builder.Services.AddSingleton<BaseViewModel>();

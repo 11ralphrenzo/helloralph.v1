@@ -90,6 +90,10 @@
 	  <None Remove="Resources\Fonts\fontello.ttf" />
 	  <None Remove="UnitsNet" />
 	  <None Remove="Dangl.Calculator" />
+	  <None Remove="SkiaSharp.Extended.UI.Maui" />
+	  <None Remove="Resources\Raw\weather-windy.json" />
+	  <None Remove="Resources\Raw\partly-shower.json" />
+	  <None Remove="Resources\Raw\shower.json" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -103,6 +107,7 @@
 	  <PackageReference Include="PropertyChanged.Fody" Version="4.1.0" />
 	  <PackageReference Include="UnitsNet" Version="4.150.0" />
 	  <PackageReference Include="Dangl.Calculator" Version="2.0.0" />
+	  <PackageReference Include="SkiaSharp.Extended.UI.Maui" Version="2.0.0-preview.61" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -214,6 +219,12 @@
 	  <MauiXaml Update="Views\Udemy\CalculatorPage.xaml">
 	    <SubType></SubType>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\Udemy\Weather.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Condition=" '$(EnableDefaultXamlItems)' == 'true' " Update="Resources\Styles\WeatherStyles.xaml">
+	    <SubType>Designer</SubType>
+	  </MauiXaml>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -232,5 +243,14 @@
 	  <BundleResource Include="Resources\Raw\quotes.txt" />
 	  <BundleResource Include="Resources\Images\img3.jpg" />
 	  <BundleResource Include="Resources\Fonts\fontello.ttf" />
+	  <BundleResource Include="Resources\Raw\shower.json" />
+	  <BundleResource Include="Resources\Raw\weather-windy.json">
+	    <LogicalName>weather-windy.json</LogicalName>
+	  </BundleResource>
+	  <BundleResource Include="Resources\Raw\weather-windy.json" />
+	</ItemGroup>
+	<ItemGroup>
+	  <MauiAsset Remove="Resources\Raw\shower.json" />
+	  <MauiAsset Remove="Resources\Raw\weather-windy.json" />
 	</ItemGroup>
 </Project>
