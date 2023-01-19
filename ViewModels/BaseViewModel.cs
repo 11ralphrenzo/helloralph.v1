@@ -9,7 +9,8 @@ using System.Threading.Tasks;
 
 namespace helloralph.ViewModels
 {
-    public partial class BaseViewModel : ObservableObject
+    [ObservableObject]
+    public partial class BaseViewModel
     {
         [ObservableProperty]
         string title;

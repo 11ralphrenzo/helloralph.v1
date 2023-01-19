@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:helloralph.ViewModels"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="helloralph.Views.TaskerPage"
+             Title="Tasker">
+    <ContentPage.BindingContext>
+        <vm:TaskerViewModel></vm:TaskerViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style Class="Header"
+                   TargetType="Label">
+                <Setter Property="FontAttributes"
+                        Value="Bold"></Setter>
+                <Setter Property="FontSize"
+                        Value="Title"></Setter>
+                <Setter Property="VerticalOptions"
+                        Value="Center"></Setter>
+            </Style>
+            <Style Class="SubHeader"
+                   TargetType="Label">
+                <Setter Property="FontSize"
+                        Value="Medium"></Setter>
+                <Setter Property="VerticalOptions"
+                        Value="Center"></Setter>
+            </Style>
+            <Style Class="CardTitle"
+                   TargetType="Label">
+                <Setter Property="FontSize"
+                        Value="Medium"></Setter>
+                <Setter Property="FontAttributes"
+                        Value="Bold"></Setter>
+            </Style>
+
+            <Style TargetType="RoundRectangle">
+                <Setter Property="CornerRadius"
+                        Value="10"></Setter>
+                <Setter Property="Fill"
+                        Value="LightPink"></Setter>
+                <Setter Property="WidthRequest"
+                        Value="200"></Setter>
+                <Setter Property="Opacity"
+                        Value="0.8"></Setter>
+                <Setter Property="Shadow"
+                        Value="{StaticResource DefaultShadow}"></Setter>
+            </Style>
+
+            <EllipseGeometry x:Key="Circle"
+                             Center="50,50"
+                             RadiusX="30"
+                             RadiusY="30"></EllipseGeometry>
+
+            <Style x:Key="ButtonAdd"
+                   TargetType="Button">
+                <Setter Property="FontAttributes"
+                        Value="Bold"></Setter>
+                <Setter Property="FontSize"
+                        Value="Large"></Setter>
+                <Setter Property="HeightRequest"
+                        Value="100"></Setter>
+                <Setter Property="WidthRequest"
+                        Value="100"></Setter>
+                <Setter Property="VerticalOptions"
+                        Value="End"></Setter>
+                <Setter Property="HorizontalOptions"
+                        Value="End"></Setter>
+                <Setter Property="Clip"
+                        Value="{StaticResource Circle}"></Setter>
+            </Style>
+
+            <Shadow x:Key="DefaultShadow"
+                Brush="Gray"
+                Opacity="0.6"
+                Radius="5"
+                Offset="5,10"></Shadow>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Grid Margin="15"
+          RowDefinitions="Auto,Auto,.25*,*">
+        <Label Text="My Tasks"
+               StyleClass="Header"/>
+        <Label Grid.Row="1"
+               StyleClass="SubHeader"
+               Text="CATEGORIES"
+               Margin="0,50,0,0"></Label>
+        <CollectionView Grid.Row="2"
+                        ItemsSource="{Binding Categories}">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout ItemSpacing="5"
+                                   Orientation="Horizontal"></LinearItemsLayout>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="10">
+                        <RoundRectangle></RoundRectangle>
+                        <VerticalStackLayout Padding="15"
+                                             Spacing="10">
+                            <Label Text="{Binding PendingTasks, StringFormat='{0} Tasks'}"></Label>
+                            <Label StyleClass="CardTitle"
+                                   Text="{Binding Name}"></Label>
+                            <ProgressBar Progress="{Binding Percentage}"
+                                         ProgressColor="{Binding Color}"></ProgressBar>
+                        </VerticalStackLayout>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <Grid Grid.Row="3"
+              RowDefinitions="Auto,*">
+            <Label Text="PENDING TASKS"
+                   StyleClass="SubHeader"
+                   Margin="0,50,0,0"></Label>
+            <CollectionView Grid.Row="1"
+                            ItemsSource="{Binding Tasks}"
+                            ItemsUpdatingScrollMode="KeepLastItemInView">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BorderColor="Transparent">
+                            <HorizontalStackLayout>
+                                <CheckBox IsChecked="{Binding Completed}"
+                                          x:Name="checkBox"
+                                          VerticalOptions="Center"
+                                          Color="{Binding Color}"
+                                          CheckedChanged="checkBox_CheckedChanged">
+                                    <!--<CheckBox.Behaviors>
+                                        <toolkit:EventToCommandBehavior
+                                            EventName="CheckedChanged"
+                                            Command="{Binding Source={x:RelativeSource AncestorType={x:Type vm:TaskerViewModel}}, Path=CheckedCommand}"></toolkit:EventToCommandBehavior>
+                                    </CheckBox.Behaviors>-->
+                                </CheckBox>
+                                <Label Text="{Binding Name}"
+                                       VerticalOptions="Center">
+                                    <Label.Triggers>
+                                        <DataTrigger TargetType="Label"
+                                                     Binding="{Binding Source={x:Reference checkBox},Path=IsChecked}"
+                                                     Value="True">
+                                            <Setter Property="TextDecorations"
+                                                    Value="Strikethrough"></Setter>
+                                        </DataTrigger>
+                                    </Label.Triggers>
+                                </Label>
+                            </HorizontalStackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+        <Button Grid.Row="3"
+                Text="+"
+                Style="{StaticResource ButtonAdd}"
+                Command="{Binding AddNewTaskCommand}"></Button>
+    </Grid>
+</ContentPage>

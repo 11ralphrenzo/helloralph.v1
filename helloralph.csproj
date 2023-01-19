@@ -95,6 +95,9 @@
 	  <None Remove="Resources\Raw\partly-shower.json" />
 	  <None Remove="Resources\Raw\shower.json" />
 	  <None Remove="Resources\Raw\partly-cloudy.json" />
+	  <None Remove="Views\Udemy\Tasker\" />
+	  <None Remove="ViewModels\Udemy\Tasker\" />
+	  <None Remove="Models\Tasker\" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -226,6 +229,12 @@
 	  <MauiXaml Condition=" '$(EnableDefaultXamlItems)' == 'true' " Update="Resources\Styles\WeatherStyles.xaml">
 	    <SubType>Designer</SubType>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\Udemy\Tasker\TaskerPage.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Udemy\Tasker\AddNewTaskPage.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -238,6 +247,9 @@
 	  <Folder Include="Models\Udemy\" />
 	  <Folder Include="Views\Udemy\Mauiverter\" />
 	  <Folder Include="ViewModels\Udemy\Mauiverter\" />
+	  <Folder Include="Views\Udemy\Tasker\" />
+	  <Folder Include="ViewModels\Udemy\Tasker\" />
+	  <Folder Include="Models\Tasker\" />
 	</ItemGroup>
 
 	<ItemGroup>

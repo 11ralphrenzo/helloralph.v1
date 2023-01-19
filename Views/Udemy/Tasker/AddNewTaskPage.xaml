@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:helloralph.ViewModels"
+             x:Class="helloralph.Views.AddNewTaskPage"
+             Title="Add New Task">
+    <ContentPage.BindingContext>
+        <vm:AddNewTaskViewModel></vm:AddNewTaskViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="EntryTask"
+                   TargetType="Entry">
+                <Setter Property="FontSize"
+                        Value="Large"></Setter>
+                <Setter Property="HorizontalTextAlignment"
+                        Value="Center"></Setter>
+                <Setter Property="VerticalOptions"
+                        Value="Center"></Setter>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Grid RowDefinitions=".2*,.7*,.1*">
+        <Entry Style="{StaticResource EntryTask}"
+               Placeholder="Enter new task"
+               Text="{Binding Task}"></Entry>
+        <CollectionView Grid.Row="1"
+                        Margin="15"
+                        ItemsSource="{Binding Categories}">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout HorizontalItemSpacing="5"
+                                 Orientation="Vertical"
+                                 Span="2"
+                                 VerticalItemSpacing="5"></GridItemsLayout>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame>
+                        <RadioButton Content="{Binding Name}"
+                                     GroupName="Category"
+                                     IsChecked="{Binding IsSelected}"></RadioButton>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+        </CollectionView>
+        <HorizontalStackLayout Grid.Row="2"
+                               Margin="10"
+                               HorizontalOptions="CenterAndExpand"
+                               Spacing="15"
+                               VerticalOptions="Center">
+            <Button CornerRadius="15"
+                    Text="Add Task"
+                    Command="{Binding AddTaskCommand}"></Button>
+            <Button CornerRadius="15"
+                    Text="Add Category"
+                    Command="{Binding AddCategoryCommand}"></Button>
+        </HorizontalStackLayout>
+    </Grid>
+</ContentPage>

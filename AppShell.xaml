@@ -47,12 +47,17 @@
          <ShellContent Title="Weather"
             ContentTemplate="{DataTemplate views:WeatherPage}"/>
     </FlyoutItem>
-    <FlyoutItem Title="Syncfusion"
+    <FlyoutItem Title="Tasker"
+            FlyoutDisplayOptions="AsSingleItem">
+        <ShellContent Title="Tasker"
+            ContentTemplate="{DataTemplate views:TaskerPage}"/>
+    </FlyoutItem>
+    <!--<FlyoutItem Title="Syncfusion"
                 FlyoutDisplayOptions="AsMultipleItems">
         <ShellContent Title="Avatar View"
                       ContentTemplate="{DataTemplate views:SfAvatarPage}"
                       Route="SfAvatar"/>
-        <!--<ShellContent Title="Barcode Generator"
+        <ShellContent Title="Barcode Generator"
                     Icon="menu_info.svg"
                     ContentTemplate="{DataTemplate views:SfBarcodeGeneratorPage}"/>
         <ShellContent Title="Badge View"
@@ -60,9 +65,9 @@
                     ContentTemplate="{DataTemplate views:SfBadgePage}"/>
         <ShellContent Title="Busy Indicator"
                     Icon="menu_info.svg"
-                    ContentTemplate="{DataTemplate views:SfBusyIndicatorPage}"/>-->
-    </FlyoutItem>
-    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
+                    ContentTemplate="{DataTemplate views:SfBusyIndicatorPage}"/>
+    </FlyoutItem>-->
+    <!--<FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
         <ShellContent Title="Sample REST Integration"
                     Icon="menu_info.svg"
                     ContentTemplate="{DataTemplate views:RESTIntegrationPage}"/>
@@ -82,5 +87,5 @@
                     ContentTemplate="{DataTemplate views:GeolocationPage}"/>
         <ShellContent Title="Media Picker"
                     ContentTemplate="{DataTemplate views:MediaPickerPage}"/>
-    </FlyoutItem>
+    </FlyoutItem>-->
 </Shell>

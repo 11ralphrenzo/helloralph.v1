@@ -44,6 +44,8 @@ public static class MauiProgram
         builder.Services.AddTransient<ConverterPage>();
         builder.Services.AddSingleton<CalculatorPage>();
         builder.Services.AddSingleton<WeatherPage>();
+        builder.Services.AddSingleton<TaskerPage>();
+        builder.Services.AddTransient<AddNewTaskPage>();
 
         builder.Services.AddSingleton<SfAvatarPage>();
         builder.Services.AddSingleton<SfBarcodeGeneratorPage>();
@@ -61,8 +63,7 @@ public static class MauiProgram
         builder.Services.AddSingleton<GeolocationPage>();
         builder.Services.AddSingleton<MediaPickerPage>();
         builder.Services.AddTransient<PickOrCapturePhotoPage>();
-        builder.Services.AddSingleton<CalculatorViewModel>();
-        builder.Services.AddSingleton<WeatherViewModel>();
+
 
         //Services - ViewModels
         builder.Services.AddSingleton<BaseViewModel>();
@@ -74,6 +75,10 @@ public static class MauiProgram
         builder.Services.AddSingleton<BMICalculatorViewModel>();
         builder.Services.AddSingleton<MenuViewModel>();
         builder.Services.AddTransient<ConverterPage>();
+        builder.Services.AddSingleton<CalculatorViewModel>();
+        builder.Services.AddSingleton<WeatherViewModel>();
+        builder.Services.AddSingleton<TaskerViewModel>();
+        builder.Services.AddTransient<AddNewTaskViewModel>();
 
         builder.Services.AddTransient<ConverterViewModel>();
         builder.Services.AddSingleton<SfAvatarViewModel>();
