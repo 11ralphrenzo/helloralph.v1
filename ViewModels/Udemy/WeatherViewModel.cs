@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.Text.Json;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -12,8 +13,17 @@ namespace helloralph.ViewModels
 
 		[ObservableProperty]
 		WeatherModel weather;
- 
-		public WeatherViewModel()
+
+		[ObservableProperty]
+		string placeName;
+
+		[ObservableProperty]
+		bool isVisible;
+
+        [ObservableProperty]
+        DateTime date = DateTime.Now;
+
+        public WeatherViewModel()
 		{
 			client = new HttpClient();
 		}
@@ -29,6 +39,23 @@ namespace helloralph.ViewModels
 				{
 					var data = await JsonSerializer.DeserializeAsync<WeatherModel>(responseStream);
 					Weather = data;
+
+					if (Weather.daily.time.Any())
+					{
+						for (int i = 0; i < Weather.daily.time.Count(); i++)
+						{
+							var daily2 = new Daily2
+							{
+								time = Weather.daily.time[i],
+								temperature_2m_max = Weather.daily.temperature_2m_max[i],
+								temperature_2m_min = Weather.daily.temperature_2m_min[i],
+								weathercode = Weather.daily.weathercode[i]
+							};
+							Weather.daily2.Add(daily2);
+						}
+					}
+
+					IsVisible = true;
 				}
 			}
 		}
@@ -53,9 +80,12 @@ namespace helloralph.ViewModels
         [RelayCommand]
         private async void Search(string address)
 		{
+			IsLoading = true;
+			PlaceName = address;
 			var location = await GetCoordinates(address);
 			if (location is not null)
 				await GetWeather(location);
+			IsLoading = false;
 		}
 	}
 }

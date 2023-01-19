@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.ObjectModel;
+
 namespace helloralph.Models
 {
     public class CurrentWeather
@@ -16,6 +18,14 @@ namespace helloralph.Models
         public List<int> weathercode { get; set; }
         public List<double> temperature_2m_max { get; set; }
         public List<double> temperature_2m_min { get; set; }
+    }
+
+    public class Daily2
+    {
+        public string time { get; set; }
+        public int weathercode { get; set; }
+        public double temperature_2m_max { get; set; }
+        public double temperature_2m_min { get; set; }
     }
 
     public class DailyUnits
@@ -38,6 +48,7 @@ namespace helloralph.Models
         public CurrentWeather current_weather { get; set; }
         public DailyUnits daily_units { get; set; }
         public Daily daily { get; set; }
-
+        public ObservableCollection<Daily2> daily2 { get; set; }
+            = new ObservableCollection<Daily2>();
     }
 }

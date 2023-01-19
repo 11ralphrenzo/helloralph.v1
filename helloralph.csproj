@@ -94,6 +94,7 @@
 	  <None Remove="Resources\Raw\weather-windy.json" />
 	  <None Remove="Resources\Raw\partly-shower.json" />
 	  <None Remove="Resources\Raw\shower.json" />
+	  <None Remove="Resources\Raw\partly-cloudy.json" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -248,6 +249,7 @@
 	    <LogicalName>weather-windy.json</LogicalName>
 	  </BundleResource>
 	  <BundleResource Include="Resources\Raw\weather-windy.json" />
+	  <BundleResource Include="Resources\Raw\partly-cloudy.json" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiAsset Remove="Resources\Raw\shower.json" />
