@@ -98,6 +98,8 @@
 	  <None Remove="Views\Udemy\Tasker\" />
 	  <None Remove="ViewModels\Udemy\Tasker\" />
 	  <None Remove="Models\Tasker\" />
+	  <None Remove="Views\Udemy\ProsperDaily\" />
+	  <None Remove="ViewModels\Udemy\ProsperDaily\" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -235,6 +237,9 @@
 	  <MauiXaml Update="Views\Udemy\Tasker\AddNewTaskPage.xaml">
 	    <SubType></SubType>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\Udemy\ProsperDaily\ProsperDailyPage.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -250,6 +255,8 @@
 	  <Folder Include="Views\Udemy\Tasker\" />
 	  <Folder Include="ViewModels\Udemy\Tasker\" />
 	  <Folder Include="Models\Tasker\" />
+	  <Folder Include="Views\Udemy\ProsperDaily\" />
+	  <Folder Include="ViewModels\Udemy\ProsperDaily\" />
 	</ItemGroup>
 
 	<ItemGroup>

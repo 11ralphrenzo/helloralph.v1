@@ -49,8 +49,11 @@
     </FlyoutItem>
     <FlyoutItem Title="Tasker"
             FlyoutDisplayOptions="AsSingleItem">
-        <ShellContent Title="Tasker"
-            ContentTemplate="{DataTemplate views:TaskerPage}"/>
+        <ShellContent ContentTemplate="{DataTemplate views:TaskerPage}"/>
+    </FlyoutItem>
+    <FlyoutItem Title="Prosper Daily"
+            FlyoutDisplayOptions="AsSingleItem">
+        <ShellContent ContentTemplate="{DataTemplate views:ProsperDailyPage}"/>
     </FlyoutItem>
     <!--<FlyoutItem Title="Syncfusion"
                 FlyoutDisplayOptions="AsMultipleItems">

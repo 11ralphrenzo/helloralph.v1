@@ -46,7 +46,7 @@ public static class MauiProgram
         builder.Services.AddSingleton<WeatherPage>();
         builder.Services.AddSingleton<TaskerPage>();
         builder.Services.AddTransient<AddNewTaskPage>();
-
+        builder.Services.AddSingleton<ProsperDailyPage>();
         builder.Services.AddSingleton<SfAvatarPage>();
         builder.Services.AddSingleton<SfBarcodeGeneratorPage>();
         builder.Services.AddSingleton<SfBadgePage>();
@@ -79,7 +79,7 @@ public static class MauiProgram
         builder.Services.AddSingleton<WeatherViewModel>();
         builder.Services.AddSingleton<TaskerViewModel>();
         builder.Services.AddTransient<AddNewTaskViewModel>();
-
+        builder.Services.AddSingleton<ProperDailyViewModel>();
         builder.Services.AddTransient<ConverterViewModel>();
         builder.Services.AddSingleton<SfAvatarViewModel>();
         builder.Services.AddSingleton<SfBarcodeGeneratorViewModel>();
