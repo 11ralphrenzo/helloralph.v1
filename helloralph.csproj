@@ -100,6 +100,10 @@
 	  <None Remove="Models\Tasker\" />
 	  <None Remove="Views\Udemy\ProsperDaily\" />
 	  <None Remove="ViewModels\Udemy\ProsperDaily\" />
+	  <None Remove="Syncfusion.Maui.Charts" />
+	  <None Remove="sqlite-net-pcl" />
+	  <None Remove="SQLiteNetExtensions" />
+	  <None Remove="SQLitePCLRaw.provider.dynamic_cdecl" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -114,6 +118,10 @@
 	  <PackageReference Include="UnitsNet" Version="4.150.0" />
 	  <PackageReference Include="Dangl.Calculator" Version="2.0.0" />
 	  <PackageReference Include="SkiaSharp.Extended.UI.Maui" Version="2.0.0-preview.61" />
+	  <PackageReference Include="Syncfusion.Maui.Charts" Version="20.2.45" />
+	  <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
+	  <PackageReference Include="SQLiteNetExtensions" Version="2.1.0" />
+	  <PackageReference Include="SQLitePCLRaw.provider.dynamic_cdecl" Version="2.1.4" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -131,6 +139,9 @@
 	  </Compile>
 	</ItemGroup>
 
+	<ItemGroup>
+	  <MauiXaml Remove="Resources\Styles\ProsperDailyStyles.xaml" />
+	</ItemGroup>
 	<ItemGroup>
 	  <MauiXaml Update="Custom\DefaultCollectionView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
@@ -240,6 +251,12 @@
 	  <MauiXaml Update="Views\Udemy\ProsperDaily\ProsperDailyPage.xaml">
 	    <SubType></SubType>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\Udemy\ProsperDaily\TransactionsPage.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Udemy\ProsperDaily\StatisticsPage.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -269,6 +286,7 @@
 	  </BundleResource>
 	  <BundleResource Include="Resources\Raw\weather-windy.json" />
 	  <BundleResource Include="Resources\Raw\partly-cloudy.json" />
+	  <BundleResource Include="Resources\Styles\ProsperDailyStyles.xaml" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiAsset Remove="Resources\Raw\shower.json" />

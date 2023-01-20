@@ -1,0 +1,221 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:chart="clr-namespace:Syncfusion.Maui.Charts;assembly=Syncfusion.Maui.Charts"
+             x:Class="helloralph.Views.StatisticsPage"
+             Title="StatisticsPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="MainColor">#301551</Color>
+            <Color x:Key="SecondaryColor">#9742ff</Color>
+
+            <Style TargetType="Grid">
+                <Setter Property="ColumnSpacing" Value="0" />
+                <Setter Property="RowSpacing" Value="0" />
+            </Style>
+
+            <Style Class="TopRectangle" TargetType="RoundRectangle">
+                <Setter Property="Margin" Value="-5" />
+                <Setter Property="CornerRadius" Value="0,0,25,25" />
+                <Setter Property="Fill" Value="{StaticResource MainColor}" />
+            </Style>
+
+            <Style Class="Header" TargetType="VerticalStackLayout">
+                <Setter Property="Margin" Value="15" />
+                <Setter Property="VerticalOptions" Value="Center" />
+            </Style>
+
+            <Style TargetType="Label">
+                <Setter Property="FontFamily" Value="Regular" />
+            </Style>
+
+            <Style Class="HeaderTitle" TargetType="Label">
+                <Setter Property="FontSize" Value="Small" />
+                <Setter Property="TextColor" Value="{StaticResource White}" />
+            </Style>
+            <Style Class="HeaderSubTitle" TargetType="Label">
+                <Setter Property="FontSize" Value="Large" />
+                <Setter Property="TextColor" Value="{StaticResource White}" />
+            </Style>
+
+            <Style Class="BalanceGrid" TargetType="Grid">
+                <Setter Property="Margin" Value="15" />
+            </Style>
+
+            <Shadow
+                x:Key="shadow"
+                Brush="{StaticResource SecondaryColor}"
+                Opacity="0.6"
+                Radius="15"
+                Offset="0,15" />
+
+            <Style Class="BalanceRectangle" TargetType="RoundRectangle">
+                <Setter Property="CornerRadius" Value="10" />
+                <Setter Property="Fill" Value="{StaticResource White}" />
+                <Setter Property="StrokeThickness" Value="2" />
+                <Setter Property="Shadow" Value="{StaticResource shadow}" />
+            </Style>
+
+            <Style
+                ApplyToDerivedTypes="True"
+                Class="Padding25"
+                TargetType="Layout">
+                <Setter Property="Padding" Value="25" />
+            </Style>
+            <Style
+                ApplyToDerivedTypes="True"
+                Class="MarginT15"
+                TargetType="View">
+                <Setter Property="Margin" Value="0,15,0,0" />
+            </Style>
+
+            <Style Class="FrameBorder" TargetType="Frame">
+                <Setter Property="HeightRequest" Value="50" />
+                <Setter Property="Padding" Value="10,5" />
+                <Setter Property="BorderColor" Value="{StaticResource SecondaryColor}" />
+            </Style>
+
+            <Style
+                ApplyToDerivedTypes="True"
+                Class="Margin15"
+                TargetType="Layout">
+                <Setter Property="Margin" Value="15" />
+            </Style>
+
+            <Style Class="StrongTitle" TargetType="Label">
+                <Setter Property="FontFamily" Value="Strong" />
+                <Setter Property="FontSize" Value="Large" />
+                <Setter Property="TextColor" Value="{StaticResource Black}" />
+            </Style>
+            <Style Class="StrongMediumTitle" TargetType="Label">
+                <Setter Property="FontFamily" Value="Strong" />
+                <Setter Property="FontSize" Value="Small" />
+                <Setter Property="TextColor" Value="{StaticResource Black}" />
+            </Style>
+
+            <Style Class="StrongSubTitle" TargetType="Label">
+                <Setter Property="FontFamily" Value="Strong" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="TextColor" Value="{StaticResource Black}" />
+            </Style>
+
+            <Style Class="SmallFont" TargetType="Label">
+                <Setter Property="FontFamily" Value="Regular" />
+                <Setter Property="FontSize" Value="Small" />
+            </Style>
+
+            <Style Class="ListAmount" TargetType="Label">
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="HorizontalTextAlignment" Value="End" />
+                <Setter Property="VerticalOptions" Value="Center" />
+            </Style>
+
+            <EllipseGeometry
+                x:Key="circle"
+                Center="50,50"
+                RadiusX="30"
+                RadiusY="30" />
+
+            <Style Class="CircularButton" TargetType="Button">
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="FontSize" Value="Large" />
+                <Setter Property="HeightRequest" Value="100" />
+                <Setter Property="WidthRequest" Value="100" />
+                <Setter Property="Margin" Value="0,0,0,-35" />
+                <Setter Property="VerticalOptions" Value="End" />
+                <Setter Property="HorizontalOptions" Value="End" />
+                <Setter Property="BackgroundColor" Value="{StaticResource MainColor}" />
+                <Setter Property="Clip" Value="{StaticResource circle}" />
+            </Style>
+
+            <Style Class="NoDataText" TargetType="Label">
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="TextColor" Value="{StaticResource Black}" />
+                <Setter Property="VerticalOptions" Value="Center" />
+            </Style>
+
+            <Style
+                ApplyToDerivedTypes="True"
+                Class="RedControl"
+                TargetType="View">
+                <Setter Property="BackgroundColor" Value="DarkRed" />
+            </Style>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Grid RowDefinitions=".15*,.15*,.30*,.40*">
+        <RoundRectangle Grid.RowSpan="2"
+                        StyleClass="TopRectangle"></RoundRectangle>
+        <VerticalStackLayout StyleClass="Header">
+            <Label StyleClass="HeaderSubTitle"></Label>
+        </VerticalStackLayout>
+        <Grid Grid.Row="1"
+              Grid.RowSpan="2"
+              StyleClass="BalanceGrid">
+            <RoundRectangle StyleClass="BalanceRectangle"></RoundRectangle>
+            <chart:SfCartesianChart Margin="5,5,20,5">
+                <chart:SfCartesianChart.XAxes>
+                    <chart:CategoryAxis />
+                </chart:SfCartesianChart.XAxes>
+
+                <chart:SfCartesianChart.YAxes>
+                    <chart:NumericalAxis />
+                </chart:SfCartesianChart.YAxes>
+
+                <chart:SplineSeries
+                    ItemsSource="{Binding Summary}"
+                    XBindingPath="ShownDate"
+                    YBindingPath="TransactionsTotal" />
+            </chart:SfCartesianChart>
+        </Grid>
+        <Grid Grid.Row="3"
+              RowDefinitions=".1*,.9*"
+              StyleClass="Margin15">
+            <Label Text="Top Spending"></Label>
+            <CollectionView Grid.Row="1"
+                            EmptyView="No Data">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout ItemSpacing="15"
+                                       Orientation="Vertical"></LinearItemsLayout>
+                </CollectionView.ItemsLayout>
+                <CollectionView.EmptyViewTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Label StyleClass="NoDataText"
+                                   Text="No data found, click on the + button to add new transaction."></Label>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.EmptyViewTemplate>
+                <CollectionView.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>mono</x:String>
+                        <x:String>mono</x:String>
+                        <x:String>mono</x:String>
+                        <x:String>mono</x:String>
+                        <x:String>mono</x:String>
+                        <x:String>mono</x:String>
+                        <x:String>mono</x:String>
+                        <x:String>mono</x:String>
+                        <x:String>mono</x:String>
+                    </x:Array>
+                </CollectionView.ItemsSource>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid ColumnDefinitions="*,*"
+                              RowDefinitions="*,*">
+                            <Label StyleClass="StrongMediumTitle"
+                                   Text="Transaction"></Label>
+                            <Label Grid.Row="1"
+                                   StyleClass="Small Font"
+                                   Text="Todat"></Label>
+                            <Label Grid.RowSpan="2"
+                                   Grid.Column="1"
+                                   StyleClass="ListAmout"
+                                   Text="+ $550.00"></Label>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+    </Grid>
+</ContentPage>
