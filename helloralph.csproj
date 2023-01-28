@@ -104,6 +104,7 @@
 	  <None Remove="sqlite-net-pcl" />
 	  <None Remove="SQLiteNetExtensions" />
 	  <None Remove="SQLitePCLRaw.provider.dynamic_cdecl" />
+	  <None Remove="Plugin.Fingerprint" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -122,6 +123,7 @@
 	  <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
 	  <PackageReference Include="SQLiteNetExtensions" Version="2.1.0" />
 	  <PackageReference Include="SQLitePCLRaw.provider.dynamic_cdecl" Version="2.1.4" />
+	  <PackageReference Include="Plugin.Fingerprint" Version="3.0.0-beta.1" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -255,6 +257,9 @@
 	    <SubType></SubType>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Udemy\ProsperDaily\StatisticsPage.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\DeviceFeatures\BiometricsPage.xaml">
 	    <SubType></SubType>
 	  </MauiXaml>
 	</ItemGroup>

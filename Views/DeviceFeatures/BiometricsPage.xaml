@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:helloralph.ViewModels"
+             x:Class="helloralph.Views.BiometricsPage"
+             Title="BiometricsPage">
+    <ContentPage.BindingContext>
+        <vm:BiometricsViewModel></vm:BiometricsViewModel>
+    </ContentPage.BindingContext>
+    <VerticalStackLayout>
+        <Label Text="{Binding AuthenticationTypeMessage, StringFormat='Type: {0}'}"></Label>
+        <Label Text="{Binding PluginAvailabilityMessage, StringFormat='Can Check: {0}'}"></Label>
+        <Label Text="{Binding AvailabilityMessage, StringFormat='Is Available: {0}'}"></Label>
+        <Label Text="{Binding IsAuthenticatedMessage, StringFormat='Is Authenticated: {0}'}"></Label>
+        <Label Text="{Binding AuthenticationStatusMessage, StringFormat='Status: {0}'}"></Label>
+        <Label Text="{Binding AuthenticationErrorMessage, StringFormat='Error: {0}'}"></Label>
+        <Button 
+            Text="Authenticate"
+            Command="{Binding StartAuthenticationCommand}"/>
+    </VerticalStackLayout>
+</ContentPage>

@@ -32,10 +32,12 @@
 	<string>App will be using you location.</string>
 	<key>NSLocationTemporaryUsageDescriptionDictionary</key>
 	<array>
-	<dict>
-		<key>TemporaryFullAccuracyUsageDescription</key>
-		<string>App needs full accuracy permission</string>
-	</dict>
+		<dict>
+			<key>TemporaryFullAccuracyUsageDescription</key>
+			<string>App needs full accuracy permission</string>
+		</dict>
 	</array>
+	<key>NSFaceIDUsageDescription</key>
+	<string>Need Face ID for Testing Purposes.</string>
 </dict>
 </plist>

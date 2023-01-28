@@ -20,14 +20,18 @@
             <Label Text="FOOTER"></Label>
         </DataTemplate>
     </Shell.FlyoutFooterTemplate>
+    <FlyoutItem FlyoutDisplayOptions="AsSingleItem">
+        <ShellContent Title="Biometrics"
+            ContentTemplate="{DataTemplate views:BiometricsPage}"/>
+    </FlyoutItem>
     <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
         <ShellContent Title="About Me"
             ContentTemplate="{DataTemplate views:AboutMePage}"/>
     </FlyoutItem>
-    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
+    <!--<FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
         <ShellContent Title="Home"
                     ContentTemplate="{DataTemplate views:WelcomePage}"/>
-    </FlyoutItem>
+    </FlyoutItem>-->
     <FlyoutItem Title="Udemy Tutorials"
                 FlyoutDisplayOptions="AsMultipleItems">
         <ShellContent Title="Color Maker"

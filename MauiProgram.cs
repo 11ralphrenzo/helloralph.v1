@@ -3,6 +3,8 @@ using helloralph.Custom;
 using helloralph.Utilities.DefaultHttpClient;
 using helloralph.ViewModels;
 using helloralph.Views;
+using Plugin.Fingerprint;
+using Plugin.Fingerprint.Abstractions;
 using SkiaSharp.Views.Maui.Controls.Hosting;
 using Syncfusion.Maui.Core.Hosting;
 using Syncfusion.Maui.ListView.Hosting;
@@ -63,6 +65,7 @@ public static class MauiProgram
         builder.Services.AddSingleton<GeolocationPage>();
         builder.Services.AddSingleton<MediaPickerPage>();
         builder.Services.AddTransient<PickOrCapturePhotoPage>();
+        builder.Services.AddSingleton<BiometricsPage>();
 
 
         //Services - ViewModels
@@ -96,6 +99,7 @@ public static class MauiProgram
         builder.Services.AddScoped<GeolocationViewModel>();
         builder.Services.AddScoped<MediaPickerViewModel>();
         builder.Services.AddTransient<PickOrCapturePhotoViewModel>();
+        builder.Services.AddSingleton<BiometricsViewModel>();
 
         // Services - Others
         builder.Services.AddSingleton<AppHttpClient>();
@@ -105,6 +109,7 @@ public static class MauiProgram
         builder.Services.AddSingleton<IGeocoding>(Geocoding.Default);
         builder.Services.AddSingleton<IGeolocation>(Geolocation.Default);
         builder.Services.AddSingleton<IMediaPicker>(MediaPicker.Default);
+        builder.Services.AddSingleton<IFingerprint>(CrossFingerprint.Current);
 
         // Syncfusion
         builder.ConfigureSyncfusionListView();
