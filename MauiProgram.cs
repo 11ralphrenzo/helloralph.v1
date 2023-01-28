@@ -1,5 +1,7 @@
 using CommunityToolkit.Maui;
 using helloralph.Custom;
+using helloralph.Interfaces;
+using helloralph.Services;
 using helloralph.Utilities.DefaultHttpClient;
 using helloralph.ViewModels;
 using helloralph.Views;
@@ -110,6 +112,7 @@ public static class MauiProgram
         builder.Services.AddSingleton<IGeolocation>(Geolocation.Default);
         builder.Services.AddSingleton<IMediaPicker>(MediaPicker.Default);
         builder.Services.AddSingleton<IFingerprint>(CrossFingerprint.Current);
+        builder.Services.AddSingleton<IBiometricsService>(BiometricsService.Current);
 
         // Syncfusion
         builder.ConfigureSyncfusionListView();

@@ -105,6 +105,8 @@
 	  <None Remove="SQLiteNetExtensions" />
 	  <None Remove="SQLitePCLRaw.provider.dynamic_cdecl" />
 	  <None Remove="Plugin.Fingerprint" />
+	  <None Remove="Services\" />
+	  <None Remove="Interfaces\" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -279,6 +281,8 @@
 	  <Folder Include="Models\Tasker\" />
 	  <Folder Include="Views\Udemy\ProsperDaily\" />
 	  <Folder Include="ViewModels\Udemy\ProsperDaily\" />
+	  <Folder Include="Services\" />
+	  <Folder Include="Interfaces\" />
 	</ItemGroup>
 
 	<ItemGroup>

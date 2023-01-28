@@ -4,13 +4,13 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Plugin.Fingerprint;
 using Plugin.Fingerprint.Abstractions;
+using helloralph.Utilities;
+using helloralph.Services;
 
 namespace helloralph.ViewModels
 {
 	public partial class BiometricsViewModel : BaseViewModel
 	{
-        private readonly IFingerprint fingerprint;
-
         [ObservableProperty]
         bool isAvailable;
 
@@ -34,57 +34,47 @@ namespace helloralph.ViewModels
 
         [ObservableProperty]
         string authenticationErrorMessage;
+        private BiometricsService biometrics;
 
         public BiometricsViewModel()
 		{
-            this.fingerprint = CrossFingerprint.Current;
-        }
-
-        async Task<bool> GetAuthenticationType()
-        {
-            Toast.Make("Getting Authentication Type", CommunityToolkit.Maui.Core.ToastDuration.Short);
-            var result = await this.fingerprint.GetAuthenticationTypeAsync();
-            AuthenticationTypeMessage = result.ToString();
-            return result != AuthenticationType.None;
-        }
-
-        async Task<bool> CheckIsAvailable()
-        {
-            Toast.Make("Preparing", CommunityToolkit.Maui.Core.ToastDuration.Short);
-            var result = await this.fingerprint.IsAvailableAsync();
-            PluginAvailabilityMessage = result.ToString(); 
-            return result;
-        }
-
-        async Task<bool> GetAvailability()
-        {
-            Toast.Make("Getting Availability", CommunityToolkit.Maui.Core.ToastDuration.Short);
-            var result = await this.fingerprint.GetAvailabilityAsync();
-            AvailabilityMessage = result.ToString();
-            return result == FingerprintAvailability.Available;
-        }
-
-        async Task<bool> Authenticate()
-        {
-            Toast.Make("Authenticating...", CommunityToolkit.Maui.Core.ToastDuration.Short);
-            var result = await this.fingerprint.AuthenticateAsync(
-                new AuthenticationRequestConfiguration("Authenticate", "For Testing")
-                { AllowAlternativeAuthentication = true });
-            IsAuthenticatedMessage = result.Authenticated.ToString();
-            AuthenticationStatusMessage = result.Status.ToString();
-            authenticationErrorMessage = result.ErrorMessage;
-            return result.Authenticated;
+            this.biometrics = new BiometricsService();
         }
 
         [RelayCommand]
         async void StartAuthentication()
         {
-            if (await GetAuthenticationType())
-                if (await CheckIsAvailable())
-                    if (await GetAvailability())
-                    {
-                        IsAuthenticated = await Authenticate();
-                    }
+            HelperMethods.Toast("Getting Authentication Type...");
+            var type = await biometrics.GetAuthenticationType();
+            AuthenticationTypeMessage = type.ToString();
+            if (type == AuthenticationType.None)
+            {
+                AuthenticationErrorMessage = "Face/Fingerprint not available";
+                return;
+            }
+
+            HelperMethods.Toast("Checking if enabled...");
+            var isEnabled = await biometrics.CheckIfEnabled();
+            PluginAvailabilityMessage = isEnabled.ToString();
+            if (!isEnabled)
+            {
+                AuthenticationErrorMessage = "Face/Fingerprint not enabled or registered.";
+                return;
+            }
+
+            HelperMethods.Toast("Checking availability...", false);
+            var availability = await biometrics.GetAvailability();
+            if (availability != FingerprintAvailability.Available)
+            {
+                AvailabilityMessage = availability.ToString();
+                return;
+            }
+
+            HelperMethods.Toast("Authenticating...", false);
+            var authresult = await biometrics.Authenticate();
+            IsAuthenticatedMessage = authresult.Authenticated ? "Success" : "Failed";
+            AuthenticationStatusMessage = authresult.Status.ToString();
+            AuthenticationErrorMessage = authresult.ErrorMessage;
         }
 	}
 }
