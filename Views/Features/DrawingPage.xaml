@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:helloralph.ViewModels"
+             xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="helloralph.Views.DrawingPage"
+             Title="Drawing Page"
+             BackgroundColor="{StaticResource SmokeWhite}">
+    <ContentPage.BindingContext>
+        <vm:DrawingViewModel></vm:DrawingViewModel>
+    </ContentPage.BindingContext>
+    <Grid RowDefinitions="*,Auto,Auto"
+          RowSpacing="20"
+          Padding="0,0,0,20">
+        <mct:DrawingView Grid.Row="0"
+            BackgroundColor="White"
+            LineColor="{Binding SelectedColor}"
+            LineWidth="{Binding SelectedLineSize}"
+            IsMultiLineModeEnabled="True"
+            VerticalOptions="FillAndExpand"
+            Margin="20,20,20,0"></mct:DrawingView>
+        <CollectionView Grid.Row="1"
+                        ItemsSource="{Binding LineSizes}"
+                        HeightRequest="50"
+                        SelectedItem="{Binding SelectedLineSize}"
+                        SelectionMode="Single"
+                        HorizontalScrollBarVisibility="Never">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Horizontal"
+                                   ItemSpacing="10"></LinearItemsLayout>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid WidthRequest="50"
+                          HeightRequest="50">
+                        <Line X1="40"
+                              Y1="0"
+                              X2="0"
+                              Y2="45"
+                              Stroke="{Binding Source={x:RelativeSource AncestorType={x:Type vm:DrawingViewModel}}, Path=SelectedColor}"
+                              StrokeThickness="{Binding .}"></Line>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup Name="CommonStates">
+                                <VisualState Name="Normal"></VisualState>
+                                <VisualState Name="Selected">
+                                    <VisualState.Setters>
+                                        <Setter Property="BackgroundColor"
+                                                Value="White"></Setter>
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <CollectionView Grid.Row="2"
+                        ItemsSource="{Binding DrawColors}"
+                        HeightRequest="50"
+                        SelectedItem="{Binding SelectedColor}"
+                        SelectionMode="Single"
+                        HorizontalScrollBarVisibility="Never">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Horizontal"
+                                   ItemSpacing="10"></LinearItemsLayout>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid WidthRequest="50"
+                          HeightRequest="50">
+                        <BoxView CornerRadius="25"
+                            HeightRequest="50"
+                            WidthRequest="50"
+                            Color="{Binding .}"></BoxView>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup Name="CommonStates">
+                                <VisualState Name="Normal"></VisualState>
+                                <VisualState Name="Selected">
+                                    <VisualState.Setters>
+                                        <Setter Property="BackgroundColor"
+                                                Value="White"></Setter>
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>

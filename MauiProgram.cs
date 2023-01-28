@@ -68,6 +68,7 @@ public static class MauiProgram
         builder.Services.AddSingleton<MediaPickerPage>();
         builder.Services.AddTransient<PickOrCapturePhotoPage>();
         builder.Services.AddSingleton<BiometricsPage>();
+        builder.Services.AddSingleton<DrawingPage>();
 
 
         //Services - ViewModels
@@ -102,6 +103,7 @@ public static class MauiProgram
         builder.Services.AddScoped<MediaPickerViewModel>();
         builder.Services.AddTransient<PickOrCapturePhotoViewModel>();
         builder.Services.AddSingleton<BiometricsViewModel>();
+        builder.Services.AddSingleton<DrawingViewModel>();
 
         // Services - Others
         builder.Services.AddSingleton<AppHttpClient>();

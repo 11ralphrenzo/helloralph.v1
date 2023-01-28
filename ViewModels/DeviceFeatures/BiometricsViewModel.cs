@@ -72,7 +72,7 @@ namespace helloralph.ViewModels
 
             HelperMethods.Toast("Authenticating...", false);
             var authresult = await biometrics.Authenticate();
-            IsAuthenticatedMessage = authresult.Authenticated ? "Success" : "Failed";
+            IsAuthenticatedMessage = authresult.Authenticated.ToString();
             AuthenticationStatusMessage = authresult.Status.ToString();
             AuthenticationErrorMessage = authresult.ErrorMessage;
         }

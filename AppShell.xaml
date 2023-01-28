@@ -20,8 +20,14 @@
             <Label Text="FOOTER"></Label>
         </DataTemplate>
     </Shell.FlyoutFooterTemplate>
-    <FlyoutItem FlyoutDisplayOptions="AsSingleItem">
-        <ShellContent Title="Biometrics"
+    <FlyoutItem FlyoutDisplayOptions="AsSingleItem"
+                Title="Drawing">
+        <ShellContent
+            ContentTemplate="{DataTemplate views:DrawingPage}"/>
+    </FlyoutItem>
+    <FlyoutItem FlyoutDisplayOptions="AsSingleItem"
+                Title="Biometrics">
+        <ShellContent
             ContentTemplate="{DataTemplate views:BiometricsPage}"/>
     </FlyoutItem>
     <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
